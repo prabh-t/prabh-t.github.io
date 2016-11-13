@@ -1,0 +1,1 @@
+Seq profiling is ran for 1024 bodies/1 iteration for all 3 algorithms.

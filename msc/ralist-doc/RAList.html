@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>RAList</title><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean" /><script src="haddock-util.js" type="text/javascript"></script><script type="text/javascript">//<![CDATA[
+window.onload = function () {pageLoad();setSynopsis("mini_RAList.html");};
+//]]>
+</script></head><body><div id="package-header"><ul class="links" id="page-menu"><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul><p class="caption" class="empty">&nbsp;</p></div><div id="content"><div id="module-header"><p class="caption">RAList</p></div><div id="table-of-contents"><p class="caption">Contents</p><ul><li><a href="#g:1">Types
+</a></li><li><a href="#g:2">Basic operations
+</a></li><li><a href="#g:3">Convertion operations
+</a></li><li><a href="#g:4">More advanced operations
+</a></li><li><a href="#g:5">Map
+</a></li><li><a href="#g:6">Fold
+</a></li><li><a href="#g:7">Parallel strategies
+</a></li><li><a href="#g:8">Benchmark applications
+</a><ul><li><a href="#g:9">Sum
+</a></li><li><a href="#g:10">Factorial
+</a></li><li><a href="#g:11">Sort
+</a></li><li><a href="#g:12">Histogram
+</a></li><li><a href="#g:13">Minimum
+</a></li><li><a href="#g:14">Nub
+</a></li></ul></li></ul></div><div id="description"><p class="caption">Description</p><div class="doc"><p>Author : Prabhat Totoo 2011
+</p><p>Alternative representation of Haskell's widely used list
+ data structure based on Chris Okasaki's implementation of
+ random-access list. This representation is intended to expose
+ parallelism using a structure built around trees which is better
+ suited for parallel processing.
+</p><p>Many basic list functions found in the <code>Prelude</code> and <code>Data.List</code>
+ modules are provided. Qualify uses of these function names with an 
+ alias for this module.
+</p><p>Parallel functions are marked <em>Par.</em> and the time complexity as <em>O(..)</em>.
+</p></div></div><div id="synopsis"><p id="control.syn" class="caption expander" onclick="toggleSection('syn')">Synopsis</p><ul id="section.syn" class="hide" onclick="toggleSection('syn')"><li class="src short"><span class="keyword">data</span>  <a href="#t:RAList">RAList</a> a = <a href="#v:RAL">RAL</a> !Int ![Digit a]</li><li class="src short"><a href="#v:cons">cons</a> ::  a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:head">head</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:tail">tail</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:empty">empty</a> ::  <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:isEmpty">isEmpty</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</li><li class="src short"><a href="#v:length">length</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; Int</li><li class="src short"><a href="#v:fromDataList">fromDataList</a> ::  [a] -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:toDataList">toDataList</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; [a]</li><li class="src short"><a href="#v:toDataList-39-">toDataList'</a> :: NFData a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; [a]</li><li class="src short"><a href="#v:lookup">lookup</a> ::  Int -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:update">update</a> ::  Int -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:elem">elem</a> :: Eq a =&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</li><li class="src short"><a href="#v:pelem">pelem</a> :: Eq a =&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</li><li class="src short"><a href="#v:pelem-39-">pelem'</a> :: (Eq a, NFData a) =&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</li><li class="src short"><a href="#v:take">take</a> ::  Int -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:drop">drop</a> ::  Int -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:filter">filter</a> ::  (a -&gt; Bool) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:partition">partition</a> ::  (a -&gt; Bool) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; (<a href="RAList.html#t:RAList">RAList</a> a, <a href="RAList.html#t:RAList">RAList</a> a)</li><li class="src short"><a href="#v:ralMap">ralMap</a> ::  (a -&gt; b) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> b</li><li class="src short"><a href="#v:pRalMap">pRalMap</a> ::  Strategy b -&gt; (a -&gt; b) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> b</li><li class="src short"><a href="#v:pRalMap-39-">pRalMap'</a> :: NFData b =&gt; (a -&gt; b) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> b</li><li class="src short"><a href="#v:fold">fold</a> ::  (a -&gt; b -&gt; a) -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> b -&gt; a</li><li class="src short"><a href="#v:parfold">parfold</a> :: NFData a =&gt; (a -&gt; a -&gt; a) -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:parfold-39-">parfold'</a> :: NFData a =&gt; (a -&gt; a -&gt; a) -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:evalRAList">evalRAList</a> ::  Strategy a -&gt; Strategy (<a href="RAList.html#t:RAList">RAList</a> a)</li><li class="src short"><a href="#v:parRAList">parRAList</a> ::  Strategy a -&gt; Strategy (<a href="RAList.html#t:RAList">RAList</a> a)</li><li class="src short"><a href="#v:sum">sum</a> :: Num a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:psum">psum</a> :: (NFData a, Num a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:psum-39-">psum'</a> :: (NFData a, Num a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:facto">facto</a> :: Integer -&gt; Integer</li><li class="src short"><a href="#v:pfacto">pfacto</a> :: Integer -&gt; Integer</li><li class="src short"><a href="#v:quicksort">quicksort</a> :: Ord a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:histo">histo</a> :: Int -&gt; [Int] -&gt; <a href="RAList.html#t:RAList">RAList</a> Int</li><li class="src short"><a href="#v:pRalMin">pRalMin</a> :: (Num a, Ord a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:pRalMin-39-">pRalMin'</a> :: (Num a, Ord a, NFData a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</li><li class="src short"><a href="#v:nub">nub</a> :: Eq a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; [Digit a] -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:nub1">nub1</a> :: Eq a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li><li class="src short"><a href="#v:nub2">nub2</a> :: Eq a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</li></ul></div><div id="interface"><h1 id="g:1">Types
+</h1><div class="top"><p class="src"><span class="keyword">data</span>  <a name="t:RAList" class="def">RAList</a> a </p><div class="doc"><p>RAList is the new data type to be used instead of list. It is 
+ defined as a list of complete binary trees (implemented in the 
+ module <code>ParTree</code>).
+</p><pre> data RAList a = RAL !Int ![Digit a]
+ data Digit a = Zero | One !(Tree a)
+ data Tree a = Leaf a | Node !Int !(Tree a) !(Tree a) -- Defined in ParTree module.
+</pre></div><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a name="v:RAL" class="def">RAL</a> !Int ![Digit a]</td><td class="doc empty">&nbsp;</td></tr></table></div><div class="subs instances"><p id="control.i:RAList" class="caption collapser" onclick="toggleSection('i:RAList')">Instances</p><div id="section.i:RAList" class="show"><table><tr><td class="src">Show a =&gt; Show (<a href="RAList.html#t:RAList">RAList</a> a)</td><td class="doc empty">&nbsp;</td></tr><tr><td class="src">NFData a =&gt; NFData (<a href="RAList.html#t:RAList">RAList</a> a)</td><td class="doc empty">&nbsp;</td></tr></table></div></div></div><h1 id="g:2">Basic operations
+</h1><div class="doc"><p>A number of basic operations on the new structure are 
+ implemented in order to support other main functions.
+</p></div><div class="top"><p class="src"><a name="v:cons" class="def">cons</a> ::  a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p><em>O(1)</em> Similar to cons in list <code>(:)</code>. It prepends an element to the RAList.
+</p></div></div><div class="top"><p class="src"><a name="v:head" class="def">head</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>O(1)</em> Return the first element from the RAList.
+</p></div></div><div class="top"><p class="src"><a name="v:tail" class="def">tail</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p><em>O(1)</em> Return all elements, except the first.
+</p></div></div><div class="top"><p class="src"><a name="v:empty" class="def">empty</a> ::  <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>An empty RAList where the size is 0 hence indicating that 
+ the structure is empty.
+</p><pre> RAL 0 []
+</pre></div></div><div class="top"><p class="src"><a name="v:isEmpty" class="def">isEmpty</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</p><div class="doc"><p><em>O(1)</em> Check if RAList is empty, that is, size <code>s</code> equals to 0 in:
+</p><pre> RAL s ts
+</pre></div></div><div class="top"><p class="src"><a name="v:length" class="def">length</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; Int</p><div class="doc"><p><em>O(1)</em> Return the number of elements in the RAList. The corresponding
+ function <code>length</code> in standard list has a time complexity of <em>O(n)</em>.
+</p></div></div><h1 id="g:3">Convertion operations
+</h1><div class="doc"><p>These are used for converting from/to standard list.
+</p></div><div class="top"><p class="src"><a name="v:fromDataList" class="def">fromDataList</a> ::  [a] -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>Build a RAList from a list.
+</p></div></div><div class="top"><p class="src"><a name="v:toDataList" class="def">toDataList</a> ::  <a href="RAList.html#t:RAList">RAList</a> a -&gt; [a]</p><div class="doc"><p>Convert a RAList to a list.
+</p></div></div><div class="top"><p class="src"><a name="v:toDataList-39-" class="def">toDataList'</a> :: NFData a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; [a]</p><div class="doc"><p><em>Par.</em> An alternative (parallel) implementation of <code><a href="RAList.html#v:toDataList">toDataList</a></code>.
+</p></div></div><h1 id="g:4">More advanced operations
+</h1><div class="doc"><p>which include lookup (search) by index, update, checking 
+ if element is in RAList (elem), obtaining sub-RAList 
+ from take, drop, filter and partition operations.
+</p></div><div class="top"><p class="src"><a name="v:lookup" class="def">lookup</a> ::  Int -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>O(log n)</em> Lookup the RAList using the given index like <code>(!!)</code> in 
+ standard list. Index has to be in range, otherwise an error occurs.
+</p></div></div><div class="top"><p class="src"><a name="v:update" class="def">update</a> ::  Int -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p><em>O(log n)</em> Update the element at the given index with a new value.
+</p></div></div><div class="top"><p class="src"><a name="v:elem" class="def">elem</a> :: Eq a =&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</p><div class="doc"><p>Check for any occurrence of the given element in the structure. Seq implementation
+ similar to <code><a href="RAList.html#v:elem">elem</a></code> from standard list.
+</p></div></div><div class="top"><p class="src"><a name="v:pelem" class="def">pelem</a> :: Eq a =&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</p><div class="doc"><p><em>Par.</em> parallel implementation of <code><a href="RAList.html#v:elem">elem</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:pelem-39-" class="def">pelem'</a> :: (Eq a, NFData a) =&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; Bool</p><div class="doc"><p><em>Par.</em> improved parallel version.
+</p></div></div><div class="top"><p class="src"><a name="v:take" class="def">take</a> ::  Int -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>Take the first <code>n</code> elements.
+</p></div></div><div class="top"><p class="src"><a name="v:drop" class="def">drop</a> ::  Int -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>Drop the first <code>n</code> elements.
+</p></div></div><div class="top"><p class="src"><a name="v:filter" class="def">filter</a> ::  (a -&gt; Bool) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>Return a new RAList with only those elements that match the predicate.
+</p></div></div><div class="top"><p class="src"><a name="v:partition" class="def">partition</a> ::  (a -&gt; Bool) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; (<a href="RAList.html#t:RAList">RAList</a> a, <a href="RAList.html#t:RAList">RAList</a> a)</p><div class="doc"><p>Return 2 partitions of the given RAList. The first RAList in the tuple pair 
+ satisfies the predicate, while the second does not.
+</p></div></div><h1 id="g:5">Map
+</h1><div class="doc"><p>RAList transformations.
+</p></div><div class="top"><p class="src"><a name="v:ralMap" class="def">ralMap</a> ::  (a -&gt; b) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> b</p><div class="doc"><p>Sequential high-order map function which applies a function
+ <code>f</code> to every element of the RAList.
+</p><pre> ralMap sqrt $ fromDataList [1,4,9]
+ RAL 3 [One (Leaf 1.0),One (Node 2 (Leaf 2.0) (Leaf 3.0))]
+</pre></div></div><div class="top"><p class="src"><a name="v:pRalMap" class="def">pRalMap</a> ::  Strategy b -&gt; (a -&gt; b) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> b</p><div class="doc"><p><em>Par.</em> parallel implementation of map function on RAList, using <code><a href="RAList.html#v:parRAList">parRAList</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:pRalMap-39-" class="def">pRalMap'</a> :: NFData b =&gt; (a -&gt; b) -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> b</p><div class="doc"><p><em>Par.</em> another version that uses <code><a href="ParTree.html#v:treeMap">treeMap</a></code>.
+</p></div></div><h1 id="g:6">Fold
+</h1><div class="top"><p class="src"><a name="v:fold" class="def">fold</a> ::  (a -&gt; b -&gt; a) -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> b -&gt; a</p><div class="doc"><p>Sequential fold on the RAList structure, same type signature as <code>foldl</code> (folds element from the left).
+</p><pre> fold (+) 0 $ fromDataList [1..5]
+</pre></div></div><div class="top"><p class="src"><a name="v:parfold" class="def">parfold</a> :: NFData a =&gt; (a -&gt; a -&gt; a) -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>Par.</em> parallel implementaion of fold function. The collection of trees
+ in the RAList is folded in parallel and at tree level, more parallelism is 
+ gained through the use of <code><a href="ParTree.html#v:treeFold">treeFold</a></code>. A top level fold generates the final 
+ result. The function <code>f</code> has to be both associative and commutative.
+</p></div></div><div class="top"><p class="src"><a name="v:parfold-39-" class="def">parfold'</a> :: NFData a =&gt; (a -&gt; a -&gt; a) -&gt; a -&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>Par.</em> an alternative parallel version of fold on RAList where the collection 
+ of trees are processed in order and parallelism is at sub-structure (tree level) only.
+</p></div></div><h1 id="g:7">Parallel strategies
+</h1><div class="doc"><p>Strategies are defined for Haskell's list in the module <code>Control.Parallel.Strategies</code>. 
+ Following are probably the 2 mostly used strategies.
+</p></div><div class="top"><p class="src"><a name="v:evalRAList" class="def">evalRAList</a> ::  Strategy a -&gt; Strategy (<a href="RAList.html#t:RAList">RAList</a> a)</p><div class="doc"><p>Strategy combinator that walks over the RAList and applies the
+ argument strategy <code>s</code> to every element. It generalises <code><a href="RAList.html#v:parRAList">parRAList</a></code>.
+</p><p><code>seqRAList</code> is not given, but can be easily defined by
+</p><pre> seqRAList s = evalRAList (rseq `dot` s)
+</pre></div></div><div class="top"><p class="src"><a name="v:parRAList" class="def">parRAList</a> ::  Strategy a -&gt; Strategy (<a href="RAList.html#t:RAList">RAList</a> a)</p><div class="doc"><p><code><a href="RAList.html#v:parRAList">parRAList</a></code> is obtained by composing the element strategy <code>s</code> with <code>rpar</code>.
+</p><pre> parRAList s = evalRAList (rpar `dot` s)
+</pre><p>Example
+</p><pre> ralist = fromDataList [1..5]
+ ralMap (+1) ralist `using` parRAList rdeepseq
+</pre><p>Or
+</p><pre> pRalMap rdeepseq (+1) ralist
+</pre></div></div><h1 id="g:8">Benchmark applications
+</h1><div class="doc"><p>The following are implemented so that a direct comparison can 
+ be made with similar implementation in standard list found in 
+ the StdList module.
+</p></div><h2 id="g:9">Sum
+</h2><div class="top"><p class="src"><a name="v:sum" class="def">sum</a> :: Num a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p>Sequential <code><a href="RAList.html#v:sum">sum</a></code> function that uses <code><a href="RAList.html#v:fold">fold</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:psum" class="def">psum</a> :: (NFData a, Num a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>Par.</em> parallel <code><a href="RAList.html#v:sum">sum</a></code> function that uses <code><a href="RAList.html#v:parfold">parfold</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:psum-39-" class="def">psum'</a> :: (NFData a, Num a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>Par.</em> parallel <code><a href="RAList.html#v:sum">sum</a></code> function that uses <code><a href="RAList.html#v:parfold-39-">parfold'</a></code>.
+</p></div></div><h2 id="g:10">Factorial
+</h2><div class="top"><p class="src"><a name="v:facto" class="def">facto</a> :: Integer -&gt; Integer</p><div class="doc"><p>Sequential <code>factorial</code> function that uses <code><a href="RAList.html#v:fold">fold</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:pfacto" class="def">pfacto</a> :: Integer -&gt; Integer</p><div class="doc"><p><em>Par.</em> parallel <code>factorial</code> function that uses <code><a href="RAList.html#v:parfold">parfold</a></code>.
+</p></div></div><h2 id="g:11">Sort
+</h2><div class="top"><p class="src"><a name="v:quicksort" class="def">quicksort</a> :: Ord a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>Sort a RAList of <code>n</code> random numbers using the quicksort algorithm.
+</p></div></div><h2 id="g:12">Histogram
+</h2><div class="top"><p class="src"><a name="v:histo" class="def">histo</a> :: Int -&gt; [Int] -&gt; <a href="RAList.html#t:RAList">RAList</a> Int</p><div class="doc"><p>The <code>histogram</code> function counts the occurrences of each integer in a list of <code>5n</code> integers chosen randomly from <code>0..n-1</code>.
+</p></div></div><h2 id="g:13">Minimum
+</h2><div class="top"><p class="src"><a name="v:pRalMin" class="def">pRalMin</a> :: (Num a, Ord a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>Par.</em> Return the smallest integer from the RAList.
+</p></div></div><div class="top"><p class="src"><a name="v:pRalMin-39-" class="def">pRalMin'</a> :: (Num a, Ord a, NFData a) =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; a</p><div class="doc"><p><em>Par.</em> improved parallel version. <code>min</code> is commutative i.e. min x y = min y x, 
+ so it can be used in <code><a href="RAList.html#v:fold">fold</a></code>.
+</p></div></div><h2 id="g:14">Nub
+</h2><div class="top"><p class="src"><a name="v:nub" class="def">nub</a> :: Eq a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; [Digit a] -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p><em>Par.</em> The <code><a href="RAList.html#v:nub">nub</a></code> function removes duplicate elements from the RAList. Naive version.
+</p></div></div><div class="top"><p class="src"><a name="v:nub1" class="def">nub1</a> :: Eq a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>nub-circular.
+</p></div></div><div class="top"><p class="src"><a name="v:nub2" class="def">nub2</a> :: Eq a =&gt; <a href="RAList.html#t:RAList">RAList</a> a -&gt; <a href="RAList.html#t:RAList">RAList</a> a</p><div class="doc"><p>more advanced nub-circular. (Does not work).
+</p></div></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.9.2</p></div></body></html>

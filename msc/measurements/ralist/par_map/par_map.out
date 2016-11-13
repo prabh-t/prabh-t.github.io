@@ -1,0 +1,1173 @@
+NUM_RUNS=3
+Compiling for sequential execution...
+ghc ParPerfComparison.hs  --make -O2 -rtsopts -fforce-recomp
+[1 of 4] Compiling ParTree          ( ParTree.hs, ParTree.o )
+[2 of 4] Compiling StdList          ( StdList.hs, StdList.o )
+[3 of 4] Compiling RAList           ( RAList.hs, RAList.o )
+[4 of 4] Compiling Main             ( ParPerfComparison.hs, ParPerfComparison.o )
+Linking ParPerfComparison ...
+Running sequential program 3 times...
+> Seq. run 1:
+./ParPerfComparison 1000000 1 +RTS -sstderr -K20m 
+"Parallel map"
+1.parMap: 5.208465s
+2.RAList.pRalMap: 13.452917s
+3.RAList.pRalMap': 0.476758s
+   1,755,775,120 bytes allocated in the heap
+   1,641,546,020 bytes copied during GC
+     159,224,144 bytes maximum residency (16 sample(s))
+      47,348,292 bytes maximum slop
+             454 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2770 collections,     0 parallel, 13.98s, 13.98s elapsed
+  Generation 1:    16 collections,     0 parallel,  2.13s,  2.48s elapsed
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    4.29s  (  4.30s elapsed)
+  GC    time   16.10s  ( 16.46s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   20.39s  ( 20.77s elapsed)
+
+  %GC time      79.0%  (79.3% elapsed)
+
+  Alloc rate    409,621,916 bytes per MUT second
+
+  Productivity  21.0% of total user, 20.6% of total elapsed
+
+> Seq. run 2:
+./ParPerfComparison 1000000 1 +RTS -sstderr -K20m 
+"Parallel map"
+1.parMap: 5.205405s
+2.RAList.pRalMap: 13.502366s
+3.RAList.pRalMap': 0.47267s
+   1,755,775,120 bytes allocated in the heap
+   1,641,546,020 bytes copied during GC
+     159,224,144 bytes maximum residency (16 sample(s))
+      47,348,292 bytes maximum slop
+             454 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2770 collections,     0 parallel, 14.00s, 13.97s elapsed
+  Generation 1:    16 collections,     0 parallel,  2.11s,  2.46s elapsed
+
+  INIT  time    0.00s  (  0.07s elapsed)
+  MUT   time    4.30s  (  4.36s elapsed)
+  GC    time   16.11s  ( 16.44s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   20.41s  ( 20.87s elapsed)
+
+  %GC time      78.9%  (78.8% elapsed)
+
+  Alloc rate    407,812,685 bytes per MUT second
+
+  Productivity  21.1% of total user, 20.6% of total elapsed
+
+> Seq. run 3:
+./ParPerfComparison 1000000 1 +RTS -sstderr -K20m 
+"Parallel map"
+1.parMap: 5.206038s
+2.RAList.pRalMap: 13.496013s
+3.RAList.pRalMap': 0.475575s
+   1,755,775,120 bytes allocated in the heap
+   1,641,546,020 bytes copied during GC
+     159,224,144 bytes maximum residency (16 sample(s))
+      47,348,292 bytes maximum slop
+             454 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2770 collections,     0 parallel, 13.96s, 13.98s elapsed
+  Generation 1:    16 collections,     0 parallel,  2.14s,  2.47s elapsed
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    4.34s  (  4.34s elapsed)
+  GC    time   16.10s  ( 16.45s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   20.44s  ( 20.80s elapsed)
+
+  %GC time      78.8%  (79.1% elapsed)
+
+  Alloc rate    404,430,211 bytes per MUT second
+
+  Productivity  21.2% of total user, 20.9% of total elapsed
+
+Compiling for parallel execution (-threaded flag on)...
+ghc ParPerfComparison.hs  --make -O2 -rtsopts -fforce-recomp -threaded
+
+StdList.hs:55:0:  warning: no newline at end of file
+
+RAList.hs:453:0:  warning: no newline at end of file
+[1 of 7] Compiling Control.Seq      ( /u1/msc/pt114/par-modules/3.1.0.1/Control/Seq.hs, /u1/msc/pt114/par-modules/3.1.0.1/Control/Seq.o )
+[2 of 7] Compiling Control.Parallel ( /u1/msc/pt114/par-modules/3.1.0.1/Control/Parallel.hs, /u1/msc/pt114/par-modules/3.1.0.1/Control/Parallel.o )
+[3 of 7] Compiling Control.Parallel.Strategies ( /u1/msc/pt114/par-modules/3.1.0.1/Control/Parallel/Strategies.hs, /u1/msc/pt114/par-modules/3.1.0.1/Control/Parallel/Strategies.o )
+[4 of 7] Compiling ParTree          ( ParTree.hs, ParTree.o )
+[5 of 7] Compiling StdList          ( StdList.hs, StdList.o )
+[6 of 7] Compiling RAList           ( RAList.hs, RAList.o )
+[7 of 7] Compiling Main             ( ParPerfComparison.hs, ParPerfComparison.o )
+Linking ParPerfComparison ...
+Running parallel program 3 times on 1 to 8 cores...
+> Par. run 1 on 1 cores:
+./ParPerfComparison 1000000 1 +RTS -N1 -sstderr -K20m 
+"Parallel map"
+1.parMap: 5.959945s
+2.RAList.pRalMap: 15.658399s
+3.RAList.pRalMap': 0.540718s
+   1,755,775,576 bytes allocated in the heap
+   1,637,414,892 bytes copied during GC
+     159,225,760 bytes maximum residency (16 sample(s))
+      47,358,868 bytes maximum slop
+             454 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2770 collections,     0 parallel, 15.87s, 15.87s elapsed
+  Generation 1:    16 collections,     0 parallel,  2.32s,  2.64s elapsed
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  5.43s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    5.70s    (  5.43s)      18.19s    ( 18.51s)
+
+  SPARKS: 3000013 (0 converted, 1016395 pruned)
+
+  INIT  time    0.00s  (  0.00s elapsed)
+  MUT   time    5.41s  (  5.43s elapsed)
+  GC    time   18.19s  ( 18.51s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   23.60s  ( 23.95s elapsed)
+
+  %GC time      77.1%  (77.3% elapsed)
+
+  Alloc rate    324,710,317 bytes per MUT second
+
+  Productivity  22.9% of total user, 22.6% of total elapsed
+
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 1 cores:
+./ParPerfComparison 1000000 1 +RTS -N1 -sstderr -K20m 
+"Parallel map"
+1.parMap: 5.925996s
+2.RAList.pRalMap: 15.564881s
+3.RAList.pRalMap': 0.538546s
+   1,755,775,580 bytes allocated in the heap
+   1,637,414,860 bytes copied during GC
+     159,225,760 bytes maximum residency (16 sample(s))
+      47,358,868 bytes maximum slop
+             454 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2770 collections,     0 parallel, 15.76s, 15.75s elapsed
+  Generation 1:    16 collections,     0 parallel,  2.31s,  2.64s elapsed
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  5.42s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    5.69s    (  5.42s)      18.07s    ( 18.39s)
+
+  SPARKS: 3000013 (0 converted, 1016395 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    5.38s  (  5.42s elapsed)
+  GC    time   18.07s  ( 18.39s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   23.44s  ( 23.82s elapsed)
+
+  %GC time      77.1%  (77.2% elapsed)
+
+  Alloc rate    326,463,445 bytes per MUT second
+
+  Productivity  22.9% of total user, 22.6% of total elapsed
+
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 1 cores:
+./ParPerfComparison 1000000 1 +RTS -N1 -sstderr -K20m 
+"Parallel map"
+1.parMap: 5.9663s
+2.RAList.pRalMap: 15.637248s
+3.RAList.pRalMap': 0.537017s
+   1,755,775,608 bytes allocated in the heap
+   1,637,414,980 bytes copied during GC
+     159,225,760 bytes maximum residency (16 sample(s))
+      47,358,868 bytes maximum slop
+             454 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2770 collections,     0 parallel, 15.85s, 15.86s elapsed
+  Generation 1:    16 collections,     0 parallel,  2.29s,  2.63s elapsed
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  5.43s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    5.72s    (  5.43s)      18.14s    ( 18.49s)
+
+  SPARKS: 3000013 (0 converted, 1016395 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    5.40s  (  5.43s elapsed)
+  GC    time   18.14s  ( 18.49s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   23.55s  ( 23.93s elapsed)
+
+  %GC time      77.1%  (77.2% elapsed)
+
+  Alloc rate    324,892,441 bytes per MUT second
+
+  Productivity  22.9% of total user, 22.6% of total elapsed
+
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 2 cores:
+./ParPerfComparison 1000000 1 +RTS -N2 -sstderr -K20m 
+"Parallel map"
+1.parMap: 6.101995s
+2.RAList.pRalMap: 16.964334s
+3.RAList.pRalMap': 0.523264s
+   1,756,318,000 bytes allocated in the heap
+   1,533,315,696 bytes copied during GC
+      97,852,212 bytes maximum residency (17 sample(s))
+      29,482,612 bytes maximum slop
+             263 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  2409 collections,  2408 parallel, 23.87s, 18.03s elapsed
+  Generation 1:    17 collections,    17 parallel,  3.11s,  1.83s elapsed
+
+  Parallel GC work balance: 1.25 (383235679 / 307605723, ideal 2)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   18.41s    (  5.73s)       2.81s    (  2.09s)
+  Task  1 (worker) :    0.00s    (  5.73s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    1.15s    (  5.73s)      23.93s    ( 17.59s)
+  Task  3 (worker) :    0.22s    (  5.73s)       0.25s    (  0.17s)
+
+  SPARKS: 3000013 (1332418 converted, 1000008 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    6.85s  (  5.73s elapsed)
+  GC    time   26.98s  ( 19.85s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   33.84s  ( 25.60s elapsed)
+
+  %GC time      79.7%  (77.6% elapsed)
+
+  Alloc rate    256,174,944 bytes per MUT second
+
+  Productivity  20.3% of total user, 26.8% of total elapsed
+
+gc_alloc_block_sync: 60523
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 2 cores:
+./ParPerfComparison 1000000 1 +RTS -N2 -sstderr -K20m 
+"Parallel map"
+1.parMap: 6.067284s
+2.RAList.pRalMap: 16.947857s
+3.RAList.pRalMap': 0.523858s
+   1,756,364,220 bytes allocated in the heap
+   1,534,648,692 bytes copied during GC
+      97,938,832 bytes maximum residency (17 sample(s))
+      29,448,688 bytes maximum slop
+             264 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2409 collections,  2408 parallel, 23.80s, 17.97s elapsed
+  Generation 1:    17 collections,    17 parallel,  3.15s,  1.82s elapsed
+
+  Parallel GC work balance: 1.25 (383546577 / 307308771, ideal 2)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   18.33s    (  5.74s)       2.83s    (  2.11s)
+  Task  1 (worker) :    0.00s    (  5.74s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    1.14s    (  5.74s)      23.88s    ( 17.51s)
+  Task  3 (worker) :    0.23s    (  5.74s)       0.23s    (  0.17s)
+
+  SPARKS: 3000013 (1339656 converted, 1000008 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    6.84s  (  5.74s elapsed)
+  GC    time   26.94s  ( 19.79s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   33.79s  ( 25.54s elapsed)
+
+  %GC time      79.8%  (77.5% elapsed)
+
+  Alloc rate    256,742,698 bytes per MUT second
+
+  Productivity  20.2% of total user, 26.8% of total elapsed
+
+gc_alloc_block_sync: 52801
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 2 cores:
+./ParPerfComparison 1000000 1 +RTS -N2 -sstderr -K20m 
+"Parallel map"
+1.parMap: 6.100406s
+2.RAList.pRalMap: 17.010111s
+3.RAList.pRalMap': 0.518967s
+   1,756,247,472 bytes allocated in the heap
+   1,533,002,164 bytes copied during GC
+      97,862,736 bytes maximum residency (17 sample(s))
+      29,453,256 bytes maximum slop
+             266 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  2404 collections,  2403 parallel, 23.81s, 18.09s elapsed
+  Generation 1:    17 collections,    17 parallel,  3.12s,  1.82s elapsed
+
+  Parallel GC work balance: 1.24 (383152847 / 307788442, ideal 2)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   18.47s    (  5.72s)       2.81s    (  2.12s)
+  Task  1 (worker) :    0.00s    (  5.73s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    1.25s    (  5.73s)      23.88s    ( 17.62s)
+  Task  3 (worker) :    0.22s    (  5.73s)       0.24s    (  0.17s)
+
+  SPARKS: 3000013 (1359979 converted, 1000008 pruned)
+
+  INIT  time    0.00s  (  0.02s elapsed)
+  MUT   time    6.88s  (  5.73s elapsed)
+  GC    time   26.93s  ( 19.90s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   33.81s  ( 25.65s elapsed)
+
+  %GC time      79.6%  (77.6% elapsed)
+
+  Alloc rate    255,159,046 bytes per MUT second
+
+  Productivity  20.4% of total user, 26.8% of total elapsed
+
+gc_alloc_block_sync: 63989
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 3 cores:
+./ParPerfComparison 1000000 1 +RTS -N3 -sstderr -K20m 
+"Parallel map"
+1.parMap: 6.901686s
+2.RAList.pRalMap: 15.178297s
+3.RAList.pRalMap': 0.476847s
+   1,757,161,984 bytes allocated in the heap
+   1,432,691,432 bytes copied during GC
+     104,474,432 bytes maximum residency (17 sample(s))
+     114,813,628 bytes maximum slop
+             296 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  2069 collections,  2068 parallel, 30.91s, 17.87s elapsed
+  Generation 1:    17 collections,    17 parallel,  4.81s,  2.07s elapsed
+
+  Parallel GC work balance: 1.34 (358077770 / 267624149, ideal 3)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.30s    (  0.11s)
+  Task  1 (worker) :   20.50s    (  5.45s)       0.75s    (  0.44s)
+  Task  2 (bound)  :    0.00s    (  5.45s)      34.49s    ( 19.29s)
+  Task  3 (worker) :   20.98s    (  5.45s)       0.18s    (  0.11s)
+  Task  4 (worker) :    0.00s    (  5.45s)       0.00s    (  0.00s)
+
+  SPARKS: 3000013 (1797327 converted, 980156 pruned)
+
+  INIT  time    0.00s  (  0.05s elapsed)
+  MUT   time    7.87s  (  5.45s elapsed)
+  GC    time   35.72s  ( 19.95s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   43.59s  ( 25.45s elapsed)
+
+  %GC time      81.9%  (78.4% elapsed)
+
+  Alloc rate    223,250,690 bytes per MUT second
+
+  Productivity  18.1% of total user, 30.9% of total elapsed
+
+gc_alloc_block_sync: 56015
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 3 cores:
+./ParPerfComparison 1000000 1 +RTS -N3 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.090542s
+2.RAList.pRalMap: 15.353536s
+3.RAList.pRalMap': 0.45952s
+   1,758,095,248 bytes allocated in the heap
+   1,429,529,104 bytes copied during GC
+     104,101,028 bytes maximum residency (17 sample(s))
+     129,494,740 bytes maximum slop
+             305 MB total memory in use (3 MB lost due to fragmentation)
+
+  Generation 0:  2074 collections,  2073 parallel, 30.61s, 17.81s elapsed
+  Generation 1:    17 collections,    17 parallel,  4.76s,  2.03s elapsed
+
+  Parallel GC work balance: 1.33 (357281906 / 268863825, ideal 3)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.92s    (  5.35s)       0.19s    (  0.11s)
+  Task  1 (worker) :    0.00s    (  5.35s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.35s)      34.04s    ( 19.10s)
+  Task  3 (worker) :    0.24s    (  5.35s)       0.05s    (  0.02s)
+  Task  4 (worker) :   20.09s    (  5.35s)       1.09s    (  0.60s)
+
+  SPARKS: 3011274 (1872435 converted, 981437 pruned)
+
+  INIT  time    0.00s  (  0.02s elapsed)
+  MUT   time    7.86s  (  5.35s elapsed)
+  GC    time   35.37s  ( 19.84s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   43.23s  ( 25.21s elapsed)
+
+  %GC time      81.8%  (78.7% elapsed)
+
+  Alloc rate    223,681,106 bytes per MUT second
+
+  Productivity  18.2% of total user, 31.2% of total elapsed
+
+gc_alloc_block_sync: 81392
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 3 cores:
+./ParPerfComparison 1000000 1 +RTS -N3 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.188154s
+2.RAList.pRalMap: 15.824016s
+3.RAList.pRalMap': 0.466211s
+   1,759,516,816 bytes allocated in the heap
+   1,440,850,728 bytes copied during GC
+     104,084,404 bytes maximum residency (17 sample(s))
+     128,417,140 bytes maximum slop
+             307 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  2116 collections,  2115 parallel, 31.71s, 18.31s elapsed
+  Generation 1:    17 collections,    17 parallel,  4.71s,  2.03s elapsed
+
+  Parallel GC work balance: 1.34 (360092409 / 268504644, ideal 3)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.32s    (  5.44s)       1.24s    (  0.74s)
+  Task  1 (worker) :    0.00s    (  5.44s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.44s)      34.62s    ( 19.34s)
+  Task  3 (worker) :    0.19s    (  5.44s)       0.12s    (  0.06s)
+  Task  4 (worker) :   21.25s    (  5.44s)       0.44s    (  0.21s)
+
+  SPARKS: 3032780 (1802185 converted, 1015770 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    7.89s  (  5.44s elapsed)
+  GC    time   36.42s  ( 20.34s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   44.32s  ( 25.80s elapsed)
+
+  %GC time      82.2%  (78.9% elapsed)
+
+  Alloc rate    222,869,754 bytes per MUT second
+
+  Productivity  17.8% of total user, 30.6% of total elapsed
+
+gc_alloc_block_sync: 77288
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 4 cores:
+./ParPerfComparison 1000000 1 +RTS -N4 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.194156s
+2.RAList.pRalMap: 14.782875s
+3.RAList.pRalMap': 0.357341s
+   1,762,038,324 bytes allocated in the heap
+   1,343,139,920 bytes copied during GC
+     100,747,300 bytes maximum residency (16 sample(s))
+      65,565,228 bytes maximum slop
+             281 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1969 collections,  1968 parallel, 34.07s, 17.08s elapsed
+  Generation 1:    16 collections,    16 parallel,  6.82s,  2.49s elapsed
+
+  Parallel GC work balance: 1.38 (335675977 / 242922389, ideal 4)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.64s    (  5.45s)       0.06s    (  0.03s)
+  Task  1 (worker) :    0.00s    (  5.45s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.45s)      40.16s    ( 19.28s)
+  Task  3 (worker) :    0.10s    (  5.45s)       0.20s    (  0.07s)
+  Task  4 (worker) :   20.51s    (  5.45s)       0.13s    (  0.05s)
+  Task  5 (worker) :   20.31s    (  5.45s)       0.33s    (  0.15s)
+
+  SPARKS: 3008204 (1996438 converted, 994802 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    8.81s  (  5.45s elapsed)
+  GC    time   40.89s  ( 19.57s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   49.70s  ( 25.04s elapsed)
+
+  %GC time      82.3%  (78.2% elapsed)
+
+  Alloc rate    199,899,227 bytes per MUT second
+
+  Productivity  17.7% of total user, 35.2% of total elapsed
+
+gc_alloc_block_sync: 155927
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 4 cores:
+./ParPerfComparison 1000000 1 +RTS -N4 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.19405s
+2.RAList.pRalMap: 14.689402s
+3.RAList.pRalMap': 0.352762s
+   1,761,039,920 bytes allocated in the heap
+   1,344,938,200 bytes copied during GC
+     100,599,496 bytes maximum residency (16 sample(s))
+      58,688,044 bytes maximum slop
+             280 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1967 collections,  1966 parallel, 34.15s, 16.99s elapsed
+  Generation 1:    16 collections,    16 parallel,  6.77s,  2.46s elapsed
+
+  Parallel GC work balance: 1.38 (336139222 / 243169451, ideal 4)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.56s    (  5.43s)       0.01s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  5.43s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.43s)      40.19s    ( 19.14s)
+  Task  3 (worker) :    0.08s    (  5.43s)       0.21s    (  0.08s)
+  Task  4 (worker) :   20.05s    (  5.43s)       0.47s    (  0.21s)
+  Task  5 (worker) :   20.46s    (  5.43s)       0.05s    (  0.01s)
+
+  SPARKS: 3002060 (1997199 converted, 990107 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    8.79s  (  5.43s elapsed)
+  GC    time   40.93s  ( 19.45s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   49.72s  ( 24.89s elapsed)
+
+  %GC time      82.3%  (78.1% elapsed)
+
+  Alloc rate    200,399,483 bytes per MUT second
+
+  Productivity  17.7% of total user, 35.3% of total elapsed
+
+gc_alloc_block_sync: 161051
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 4 cores:
+./ParPerfComparison 1000000 1 +RTS -N4 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.176381s
+2.RAList.pRalMap: 14.69593s
+3.RAList.pRalMap': 0.360958s
+   1,762,241,444 bytes allocated in the heap
+   1,345,599,696 bytes copied during GC
+     100,606,568 bytes maximum residency (16 sample(s))
+      57,958,996 bytes maximum slop
+             280 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1969 collections,  1968 parallel, 33.89s, 16.98s elapsed
+  Generation 1:    16 collections,    16 parallel,  6.77s,  2.46s elapsed
+
+  Parallel GC work balance: 1.38 (336303569 / 243485705, ideal 4)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.51s    (  5.43s)       0.07s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  5.44s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.44s)      39.97s    ( 19.15s)
+  Task  3 (worker) :    0.11s    (  5.44s)       0.19s    (  0.08s)
+  Task  4 (worker) :   20.46s    (  5.44s)       0.05s    (  0.02s)
+  Task  5 (worker) :   20.12s    (  5.44s)       0.38s    (  0.18s)
+
+  SPARKS: 3016395 (1997090 converted, 995597 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    8.77s  (  5.44s elapsed)
+  GC    time   40.66s  ( 19.44s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   49.43s  ( 24.89s elapsed)
+
+  %GC time      82.3%  (78.1% elapsed)
+
+  Alloc rate    201,015,805 bytes per MUT second
+
+  Productivity  17.7% of total user, 35.2% of total elapsed
+
+gc_alloc_block_sync: 158503
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 5 cores:
+./ParPerfComparison 1000000 1 +RTS -N5 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.172442s
+2.RAList.pRalMap: 14.741421s
+3.RAList.pRalMap': 0.37279s
+   1,768,192,552 bytes allocated in the heap
+   1,328,716,296 bytes copied during GC
+      85,434,632 bytes maximum residency (18 sample(s))
+      65,585,916 bytes maximum slop
+             227 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1951 collections,  1950 parallel, 40.45s, 17.37s elapsed
+  Generation 1:    18 collections,    18 parallel,  8.64s,  2.53s elapsed
+
+  Parallel GC work balance: 1.44 (332072040 / 231306776, ideal 5)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.12s    (  0.03s)
+  Task  1 (worker) :   20.74s    (  5.53s)       0.07s    (  0.03s)
+  Task  2 (bound)  :    0.00s    (  5.53s)      48.36s    ( 19.68s)
+  Task  3 (worker) :   20.72s    (  5.53s)       0.01s    (  0.00s)
+  Task  4 (worker) :    0.00s    (  5.53s)       0.00s    (  0.00s)
+  Task  5 (worker) :   20.70s    (  5.53s)       0.07s    (  0.02s)
+  Task  6 (worker) :   20.41s    (  5.53s)       0.45s    (  0.12s)
+
+  SPARKS: 3061617 (2000080 converted, 968653 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    9.16s  (  5.53s elapsed)
+  GC    time   49.09s  ( 19.89s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   58.25s  ( 25.44s elapsed)
+
+  %GC time      84.3%  (78.2% elapsed)
+
+  Alloc rate    192,979,282 bytes per MUT second
+
+  Productivity  15.7% of total user, 36.0% of total elapsed
+
+gc_alloc_block_sync: 160188
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 5 cores:
+./ParPerfComparison 1000000 1 +RTS -N5 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.11911s
+2.RAList.pRalMap: 14.64905s
+3.RAList.pRalMap': 0.346705s
+   1,766,010,368 bytes allocated in the heap
+   1,311,745,484 bytes copied during GC
+      85,434,608 bytes maximum residency (17 sample(s))
+      65,590,012 bytes maximum slop
+             227 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1943 collections,  1942 parallel, 39.35s, 17.16s elapsed
+  Generation 1:    17 collections,    17 parallel,  8.21s,  2.46s elapsed
+
+  Parallel GC work balance: 1.41 (327829171 / 231749004, ideal 5)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.06s    (  0.02s)
+  Task  1 (worker) :   20.16s    (  5.41s)       0.28s    (  0.07s)
+  Task  2 (bound)  :    0.00s    (  5.41s)      46.49s    ( 19.31s)
+  Task  3 (worker) :   20.39s    (  5.41s)       0.15s    (  0.06s)
+  Task  4 (worker) :   20.02s    (  5.41s)       0.45s    (  0.12s)
+  Task  5 (worker) :   20.36s    (  5.41s)       0.11s    (  0.04s)
+  Task  6 (worker) :    0.00s    (  5.41s)       0.00s    (  0.00s)
+
+  SPARKS: 3031234 (2000061 converted, 969658 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    8.92s  (  5.41s elapsed)
+  GC    time   47.55s  ( 19.61s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   56.47s  ( 25.04s elapsed)
+
+  %GC time      84.2%  (78.3% elapsed)
+
+  Alloc rate    198,057,940 bytes per MUT second
+
+  Productivity  15.8% of total user, 35.6% of total elapsed
+
+gc_alloc_block_sync: 159430
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 5 cores:
+./ParPerfComparison 1000000 1 +RTS -N5 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.216441s
+2.RAList.pRalMap: 14.778136s
+3.RAList.pRalMap': 0.398357s
+   1,777,335,220 bytes allocated in the heap
+   1,355,013,116 bytes copied during GC
+      85,434,628 bytes maximum residency (18 sample(s))
+      65,585,708 bytes maximum slop
+             227 MB total memory in use (1 MB lost due to fragmentation)
+
+  Generation 0:  1951 collections,  1950 parallel, 40.77s, 17.43s elapsed
+  Generation 1:    18 collections,    18 parallel,  8.65s,  2.45s elapsed
+
+  Parallel GC work balance: 1.45 (338644987 / 234172593, ideal 5)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.78s    (  5.32s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  5.32s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.32s)      48.45s    ( 19.59s)
+  Task  3 (worker) :    0.14s    (  5.32s)       0.08s    (  0.02s)
+  Task  4 (worker) :   20.57s    (  5.32s)       0.22s    (  0.07s)
+  Task  5 (worker) :   20.43s    (  5.32s)       0.38s    (  0.08s)
+  Task  6 (worker) :   20.63s    (  5.32s)       0.27s    (  0.11s)
+
+  SPARKS: 3187725 (2000104 converted, 1067519 pruned)
+
+  INIT  time    0.00s  (  0.02s elapsed)
+  MUT   time    9.15s  (  5.32s elapsed)
+  GC    time   49.42s  ( 19.87s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   58.57s  ( 25.22s elapsed)
+
+  %GC time      84.4%  (78.8% elapsed)
+
+  Alloc rate    194,209,901 bytes per MUT second
+
+  Productivity  15.6% of total user, 36.3% of total elapsed
+
+gc_alloc_block_sync: 170592
+whitehole_spin: 2
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 6 cores:
+./ParPerfComparison 1000000 1 +RTS -N6 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.035585s
+2.RAList.pRalMap: 14.645459s
+3.RAList.pRalMap': 0.361254s
+   1,776,846,812 bytes allocated in the heap
+   1,327,689,364 bytes copied during GC
+      85,434,712 bytes maximum residency (18 sample(s))
+      65,614,348 bytes maximum slop
+             228 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1935 collections,  1934 parallel, 44.67s, 16.94s elapsed
+  Generation 1:    18 collections,    18 parallel,  9.91s,  2.40s elapsed
+
+  Parallel GC work balance: 1.45 (331820396 / 229568298, ideal 6)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.02s    (  5.35s)       0.16s    (  0.05s)
+  Task  1 (worker) :    0.00s    (  5.35s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.35s)      53.71s    ( 19.14s)
+  Task  3 (worker) :    0.00s    (  5.35s)       0.25s    (  0.05s)
+  Task  4 (worker) :   20.08s    (  5.35s)       0.03s    (  0.01s)
+  Task  5 (worker) :   20.10s    (  5.35s)       0.11s    (  0.03s)
+  Task  6 (worker) :   20.01s    (  5.35s)       0.25s    (  0.06s)
+  Task  7 (worker) :   20.12s    (  5.35s)       0.06s    (  0.02s)
+
+  SPARKS: 3139030 (2000196 converted, 942643 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    9.67s  (  5.35s elapsed)
+  GC    time   54.58s  ( 19.35s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   64.25s  ( 24.71s elapsed)
+
+  %GC time      84.9%  (78.3% elapsed)
+
+  Alloc rate    183,700,524 bytes per MUT second
+
+  Productivity  15.1% of total user, 39.1% of total elapsed
+
+gc_alloc_block_sync: 220197
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 6 cores:
+./ParPerfComparison 1000000 1 +RTS -N6 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.084419s
+2.RAList.pRalMap: 14.758401s
+3.RAList.pRalMap': 0.345771s
+   1,771,043,688 bytes allocated in the heap
+   1,314,334,392 bytes copied during GC
+      85,434,624 bytes maximum residency (17 sample(s))
+      65,569,532 bytes maximum slop
+             228 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1941 collections,  1940 parallel, 44.99s, 17.16s elapsed
+  Generation 1:    17 collections,    17 parallel, 10.79s,  2.68s elapsed
+
+  Parallel GC work balance: 1.43 (328476353 / 230502049, ideal 6)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.10s    (  0.02s)
+  Task  1 (worker) :   20.66s    (  5.47s)       0.03s    (  0.01s)
+  Task  2 (bound)  :    0.00s    (  5.47s)      55.03s    ( 19.64s)
+  Task  3 (worker) :    0.00s    (  5.47s)       0.00s    (  0.00s)
+  Task  4 (worker) :   20.41s    (  5.47s)       0.23s    (  0.06s)
+  Task  5 (worker) :   20.67s    (  5.47s)       0.03s    (  0.01s)
+  Task  6 (worker) :   20.66s    (  5.47s)       0.09s    (  0.03s)
+  Task  7 (worker) :   20.52s    (  5.47s)       0.27s    (  0.06s)
+
+  SPARKS: 3063724 (2000130 converted, 953550 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    9.86s  (  5.47s elapsed)
+  GC    time   55.78s  ( 19.84s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   65.64s  ( 25.32s elapsed)
+
+  %GC time      85.0%  (78.3% elapsed)
+
+  Alloc rate    179,609,726 bytes per MUT second
+
+  Productivity  15.0% of total user, 38.9% of total elapsed
+
+gc_alloc_block_sync: 215312
+whitehole_spin: 1
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 6 cores:
+./ParPerfComparison 1000000 1 +RTS -N6 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.248373s
+2.RAList.pRalMap: 14.698332s
+3.RAList.pRalMap': 0.320009s
+   1,770,783,972 bytes allocated in the heap
+   1,310,686,040 bytes copied during GC
+      85,434,624 bytes maximum residency (17 sample(s))
+      65,585,916 bytes maximum slop
+             228 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1932 collections,  1931 parallel, 47.07s, 17.41s elapsed
+  Generation 1:    17 collections,    17 parallel, 10.42s,  2.57s elapsed
+
+  Parallel GC work balance: 1.44 (327563707 / 227856097, ideal 6)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.07s    (  0.02s)
+  Task  1 (worker) :   20.66s    (  5.41s)       0.15s    (  0.05s)
+  Task  2 (bound)  :    0.00s    (  5.41s)      56.64s    ( 19.77s)
+  Task  3 (worker) :   20.51s    (  5.41s)       0.38s    (  0.08s)
+  Task  4 (worker) :    0.00s    (  5.41s)       0.00s    (  0.00s)
+  Task  5 (worker) :   20.71s    (  5.41s)       0.03s    (  0.01s)
+  Task  6 (worker) :   20.73s    (  5.41s)       0.14s    (  0.04s)
+  Task  7 (worker) :   20.72s    (  5.41s)       0.07s    (  0.02s)
+
+  SPARKS: 3060396 (2000096 converted, 918458 pruned)
+
+  INIT  time    0.00s  (  0.03s elapsed)
+  MUT   time    9.63s  (  5.41s elapsed)
+  GC    time   57.49s  ( 19.98s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   67.12s  ( 25.41s elapsed)
+
+  %GC time      85.6%  (78.6% elapsed)
+
+  Alloc rate    183,795,917 bytes per MUT second
+
+  Productivity  14.4% of total user, 37.9% of total elapsed
+
+gc_alloc_block_sync: 211575
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 7 cores:
+./ParPerfComparison 1000000 1 +RTS -N7 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.102277s
+2.RAList.pRalMap: 14.928573s
+3.RAList.pRalMap': 0.312819s
+   1,770,775,944 bytes allocated in the heap
+   1,310,673,872 bytes copied during GC
+      85,434,632 bytes maximum residency (17 sample(s))
+      65,602,300 bytes maximum slop
+             227 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1927 collections,  1926 parallel, 51.08s, 17.19s elapsed
+  Generation 1:    17 collections,    17 parallel, 13.51s,  2.87s elapsed
+
+  Parallel GC work balance: 1.45 (327557842 / 226187231, ideal 7)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.03s    (  0.01s)
+  Task  1 (worker) :   20.82s    (  5.61s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.61s)      63.69s    ( 19.85s)
+  Task  3 (worker) :   20.76s    (  5.61s)       0.08s    (  0.02s)
+  Task  4 (worker) :   20.77s    (  5.61s)       0.12s    (  0.04s)
+  Task  5 (worker) :   20.42s    (  5.61s)       0.44s    (  0.08s)
+  Task  6 (worker) :    0.00s    (  5.61s)       0.00s    (  0.00s)
+  Task  7 (worker) :   20.75s    (  5.61s)       0.14s    (  0.04s)
+  Task  8 (worker) :   20.92s    (  5.61s)       0.09s    (  0.03s)
+
+  SPARKS: 3029437 (2000078 converted, 927799 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time   10.72s  (  5.61s elapsed)
+  GC    time   64.58s  ( 20.06s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   75.30s  ( 25.68s elapsed)
+
+  %GC time      85.8%  (78.1% elapsed)
+
+  Alloc rate    165,224,719 bytes per MUT second
+
+  Productivity  14.2% of total user, 41.7% of total elapsed
+
+gc_alloc_block_sync: 244241
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 7 cores:
+./ParPerfComparison 1000000 1 +RTS -N7 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.444287s
+2.RAList.pRalMap: 15.227851s
+3.RAList.pRalMap': 0.310602s
+   1,773,124,496 bytes allocated in the heap
+   1,314,442,156 bytes copied during GC
+      85,434,640 bytes maximum residency (17 sample(s))
+      65,581,820 bytes maximum slop
+             227 MB total memory in use (1 MB lost due to fragmentation)
+
+  Generation 0:  1926 collections,  1925 parallel, 53.54s, 17.57s elapsed
+  Generation 1:    17 collections,    17 parallel, 15.29s,  3.24s elapsed
+
+  Parallel GC work balance: 1.46 (328511709 / 225232654, ideal 7)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.27s    (  0.06s)
+  Task  1 (worker) :   21.58s    (  5.52s)       0.17s    (  0.04s)
+  Task  2 (bound)  :    0.00s    (  5.52s)      67.93s    ( 20.61s)
+  Task  3 (worker) :   21.34s    (  5.52s)       0.34s    (  0.06s)
+  Task  4 (worker) :   21.60s    (  5.52s)       0.04s    (  0.01s)
+  Task  5 (worker) :   21.64s    (  5.52s)       0.05s    (  0.02s)
+  Task  6 (worker) :   21.64s    (  5.52s)       0.02s    (  0.01s)
+  Task  7 (worker) :   21.64s    (  5.52s)       0.00s    (  0.00s)
+  Task  8 (worker) :    0.00s    (  5.52s)       0.00s    (  0.00s)
+
+  SPARKS: 3071616 (2000066 converted, 993046 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time   11.02s  (  5.52s elapsed)
+  GC    time   68.83s  ( 20.81s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   79.85s  ( 26.34s elapsed)
+
+  %GC time      86.2%  (79.0% elapsed)
+
+  Alloc rate    160,852,260 bytes per MUT second
+
+  Productivity  13.8% of total user, 41.9% of total elapsed
+
+gc_alloc_block_sync: 259328
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 7 cores:
+./ParPerfComparison 1000000 1 +RTS -N7 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.248549s
+2.RAList.pRalMap: 14.761218s
+3.RAList.pRalMap': 0.323526s
+   1,775,479,888 bytes allocated in the heap
+   1,309,102,908 bytes copied during GC
+      85,434,704 bytes maximum residency (17 sample(s))
+      65,614,348 bytes maximum slop
+             229 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1928 collections,  1927 parallel, 50.57s, 17.02s elapsed
+  Generation 1:    17 collections,    17 parallel, 13.43s,  2.85s elapsed
+
+  Parallel GC work balance: 1.45 (327163961 / 225750608, ideal 7)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   20.63s    (  5.39s)       0.02s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  5.39s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.39s)      63.18s    ( 19.70s)
+  Task  3 (worker) :    0.04s    (  5.39s)       0.10s    (  0.02s)
+  Task  4 (worker) :   20.64s    (  5.39s)       0.08s    (  0.02s)
+  Task  5 (worker) :   20.31s    (  5.39s)       0.42s    (  0.07s)
+  Task  6 (worker) :   20.64s    (  5.39s)       0.00s    (  0.00s)
+  Task  7 (worker) :   20.56s    (  5.39s)       0.20s    (  0.06s)
+  Task  8 (worker) :   20.59s    (  5.39s)       0.00s    (  0.00s)
+
+  SPARKS: 3089519 (2000143 converted, 951283 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time   10.35s  (  5.39s elapsed)
+  GC    time   64.00s  ( 19.87s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   74.35s  ( 25.27s elapsed)
+
+  %GC time      86.1%  (78.6% elapsed)
+
+  Alloc rate    171,520,617 bytes per MUT second
+
+  Productivity  13.9% of total user, 41.0% of total elapsed
+
+gc_alloc_block_sync: 297042
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 8 cores:
+./ParPerfComparison 1000000 1 +RTS -N8 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.440132s
+2.RAList.pRalMap: 15.022407s
+3.RAList.pRalMap': 0.321247s
+   1,775,706,672 bytes allocated in the heap
+   1,311,748,960 bytes copied during GC
+      85,434,644 bytes maximum residency (17 sample(s))
+      65,602,320 bytes maximum slop
+             228 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1919 collections,  1918 parallel, 58.38s, 17.42s elapsed
+  Generation 1:    17 collections,    17 parallel, 18.36s,  3.38s elapsed
+
+  Parallel GC work balance: 1.46 (327829896 / 225051332, ideal 8)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.16s    (  0.03s)
+  Task  1 (worker) :   21.63s    (  5.63s)       0.15s    (  0.04s)
+  Task  2 (bound)  :    0.00s    (  5.63s)      75.72s    ( 20.61s)
+  Task  3 (worker) :   21.37s    (  5.63s)       0.28s    (  0.04s)
+  Task  4 (worker) :    0.00s    (  5.63s)       0.00s    (  0.00s)
+  Task  5 (worker) :   21.37s    (  5.63s)       0.26s    (  0.05s)
+  Task  6 (worker) :   21.58s    (  5.63s)       0.00s    (  0.00s)
+  Task  7 (worker) :   21.55s    (  5.63s)       0.08s    (  0.02s)
+  Task  8 (worker) :   21.58s    (  5.63s)       0.04s    (  0.01s)
+  Task  9 (worker) :   21.64s    (  5.63s)       0.03s    (  0.01s)
+
+  SPARKS: 3070126 (2000138 converted, 920270 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time   11.75s  (  5.63s elapsed)
+  GC    time   76.74s  ( 20.80s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   88.48s  ( 26.44s elapsed)
+
+  %GC time      86.7%  (78.7% elapsed)
+
+  Alloc rate    151,185,681 bytes per MUT second
+
+  Productivity  13.3% of total user, 44.4% of total elapsed
+
+gc_alloc_block_sync: 312880
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 8 cores:
+./ParPerfComparison 1000000 1 +RTS -N8 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.499108s
+2.RAList.pRalMap: 15.158968s
+3.RAList.pRalMap': 0.353844s
+   1,785,688,104 bytes allocated in the heap
+   1,349,637,456 bytes copied during GC
+      85,434,700 bytes maximum residency (18 sample(s))
+      65,622,544 bytes maximum slop
+             228 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1924 collections,  1923 parallel, 58.01s, 17.27s elapsed
+  Generation 1:    18 collections,    18 parallel, 19.96s,  3.69s elapsed
+
+  Parallel GC work balance: 1.48 (337306923 / 228583023, ideal 8)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :   21.73s    (  5.48s)       0.03s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  5.48s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.48s)      76.72s    ( 20.73s)
+  Task  3 (worker) :    0.00s    (  5.48s)       0.67s    (  0.10s)
+  Task  4 (worker) :   21.73s    (  5.48s)       0.09s    (  0.03s)
+  Task  5 (worker) :   21.79s    (  5.48s)       0.06s    (  0.02s)
+  Task  6 (worker) :   21.77s    (  5.48s)       0.00s    (  0.00s)
+  Task  7 (worker) :   21.58s    (  5.48s)       0.31s    (  0.05s)
+  Task  8 (worker) :   21.69s    (  5.48s)       0.06s    (  0.01s)
+  Task  9 (worker) :   21.84s    (  5.48s)       0.02s    (  0.01s)
+
+  SPARKS: 3193165 (2000236 converted, 960798 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time   11.75s  (  5.48s elapsed)
+  GC    time   77.97s  ( 20.96s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   89.72s  ( 26.46s elapsed)
+
+  %GC time      86.9%  (79.2% elapsed)
+
+  Alloc rate    152,022,607 bytes per MUT second
+
+  Productivity  13.1% of total user, 44.4% of total elapsed
+
+gc_alloc_block_sync: 374324
+whitehole_spin: 1
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 8 cores:
+./ParPerfComparison 1000000 1 +RTS -N8 -sstderr -K20m 
+"Parallel map"
+1.parMap: 7.359213s
+2.RAList.pRalMap: 15.10687s
+3.RAList.pRalMap': 0.302382s
+   1,777,523,600 bytes allocated in the heap
+   1,311,416,736 bytes copied during GC
+      85,434,616 bytes maximum residency (17 sample(s))
+      65,606,396 bytes maximum slop
+             228 MB total memory in use (2 MB lost due to fragmentation)
+
+  Generation 0:  1920 collections,  1919 parallel, 57.90s, 17.30s elapsed
+  Generation 1:    17 collections,    17 parallel, 18.35s,  3.41s elapsed
+
+  Parallel GC work balance: 1.46 (327745008 / 224276560, ideal 8)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.19s    (  0.04s)
+  Task  1 (worker) :   21.54s    (  5.63s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  5.63s)      74.75s    ( 20.43s)
+  Task  3 (worker) :   20.73s    (  5.63s)       0.84s    (  0.14s)
+  Task  4 (worker) :   21.50s    (  5.63s)       0.03s    (  0.01s)
+  Task  5 (worker) :   21.45s    (  5.63s)       0.15s    (  0.04s)
+  Task  6 (worker) :   21.41s    (  5.63s)       0.26s    (  0.06s)
+  Task  7 (worker) :   21.49s    (  5.63s)       0.02s    (  0.01s)
+  Task  8 (worker) :   21.55s    (  5.63s)       0.01s    (  0.00s)
+  Task  9 (worker) :    0.00s    (  5.63s)       0.00s    (  0.00s)
+
+  SPARKS: 3086967 (2000130 converted, 935466 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time   11.90s  (  5.63s elapsed)
+  GC    time   76.26s  ( 20.71s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time   88.16s  ( 26.35s elapsed)
+
+  %GC time      86.5%  (78.6% elapsed)
+
+  Alloc rate    149,369,647 bytes per MUT second
+
+  Productivity  13.5% of total user, 45.2% of total elapsed
+
+gc_alloc_block_sync: 343289
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0

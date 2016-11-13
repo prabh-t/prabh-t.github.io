@@ -1,0 +1,1133 @@
+NUM_RUNS=3
+Compiling for sequential execution...
+ghc bh.hs -DPAR --make -O2 -rtsopts -fforce-recomp
+[1 of 1] Compiling Main             ( bh.hs, bh.o )
+Linking bh ...
+Running sequential program 3 times...
+> Seq. run 1:
+./bh +RTS -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.22s
+     323,835,488 bytes allocated in the heap
+      27,756,616 bytes copied during GC
+       1,717,640 bytes maximum residency (12 sample(s))
+         154,720 bytes maximum slop
+               6 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   605 collections,     0 parallel,  0.05s,  0.04s elapsed
+  Generation 1:    12 collections,     0 parallel,  0.01s,  0.01s elapsed
+
+  INIT  time    0.00s  (  0.00s elapsed)
+  MUT   time    0.16s  (  0.16s elapsed)
+  GC    time    0.05s  (  0.06s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.21s  (  0.22s elapsed)
+
+  %GC time      25.6%  (26.1% elapsed)
+
+  Alloc rate    2,063,001,204 bytes per MUT second
+
+  Productivity  74.4% of total user, 72.2% of total elapsed
+
+> Seq. run 2:
+./bh +RTS -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.21s
+     323,835,416 bytes allocated in the heap
+      27,756,624 bytes copied during GC
+       1,717,640 bytes maximum residency (12 sample(s))
+         154,720 bytes maximum slop
+               6 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   605 collections,     0 parallel,  0.04s,  0.04s elapsed
+  Generation 1:    12 collections,     0 parallel,  0.01s,  0.01s elapsed
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.16s  (  0.16s elapsed)
+  GC    time    0.05s  (  0.06s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.21s  (  0.23s elapsed)
+
+  %GC time      23.0%  (24.3% elapsed)
+
+  Alloc rate    1,974,919,292 bytes per MUT second
+
+  Productivity  77.0% of total user, 72.5% of total elapsed
+
+> Seq. run 3:
+./bh +RTS -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.21s
+     323,835,488 bytes allocated in the heap
+      27,756,616 bytes copied during GC
+       1,717,640 bytes maximum residency (12 sample(s))
+         154,720 bytes maximum slop
+               6 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   605 collections,     0 parallel,  0.04s,  0.04s elapsed
+  Generation 1:    12 collections,     0 parallel,  0.01s,  0.01s elapsed
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.16s  (  0.16s elapsed)
+  GC    time    0.05s  (  0.05s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.21s  (  0.23s elapsed)
+
+  %GC time      23.7%  (24.2% elapsed)
+
+  Alloc rate    2,049,903,073 bytes per MUT second
+
+  Productivity  76.3% of total user, 70.0% of total elapsed
+
+Compiling for parallel execution (-threaded flag on)...
+ghc bh.hs -DPAR --make -O2 -rtsopts -fforce-recomp -threaded
+[1 of 1] Compiling Main             ( bh.hs, bh.o )
+Linking bh ...
+Running parallel program 3 times on 1 to 8 cores...
+> Par. run 1 on 1 cores:
+./bh +RTS -N1 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.22s
+     323,842,296 bytes allocated in the heap
+      27,765,312 bytes copied during GC
+       1,496,584 bytes maximum residency (12 sample(s))
+         150,936 bytes maximum slop
+               5 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   605 collections,     0 parallel,  0.04s,  0.05s elapsed
+  Generation 1:    12 collections,     0 parallel,  0.01s,  0.02s elapsed
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  0.16s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.16s    (  0.16s)       0.06s    (  0.06s)
+
+  SPARKS: 42163 (0 converted, 42163 pruned)
+
+  INIT  time    0.00s  (  0.00s elapsed)
+  MUT   time    0.15s  (  0.16s elapsed)
+  GC    time    0.06s  (  0.06s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.21s  (  0.22s elapsed)
+
+  %GC time      27.2%  (28.1% elapsed)
+
+  Alloc rate    2,089,642,174 bytes per MUT second
+
+  Productivity  72.8% of total user, 69.3% of total elapsed
+
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 1 cores:
+./bh +RTS -N1 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.22s
+     323,842,744 bytes allocated in the heap
+      27,765,488 bytes copied during GC
+       1,496,584 bytes maximum residency (12 sample(s))
+         150,936 bytes maximum slop
+               5 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   605 collections,     0 parallel,  0.05s,  0.05s elapsed
+  Generation 1:    12 collections,     0 parallel,  0.01s,  0.02s elapsed
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  0.16s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.16s    (  0.16s)       0.07s    (  0.06s)
+
+  SPARKS: 42163 (0 converted, 42163 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.15s  (  0.16s elapsed)
+  GC    time    0.07s  (  0.06s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.22s  (  0.24s elapsed)
+
+  %GC time      30.9%  (27.1% elapsed)
+
+  Alloc rate    2,130,866,802 bytes per MUT second
+
+  Productivity  68.6% of total user, 63.7% of total elapsed
+
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 1 cores:
+./bh +RTS -N1 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.22s
+     323,842,136 bytes allocated in the heap
+      27,765,800 bytes copied during GC
+       1,496,584 bytes maximum residency (12 sample(s))
+         150,936 bytes maximum slop
+               5 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   605 collections,     0 parallel,  0.04s,  0.05s elapsed
+  Generation 1:    12 collections,     0 parallel,  0.01s,  0.02s elapsed
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  0.16s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.17s    (  0.16s)       0.05s    (  0.06s)
+
+  SPARKS: 42163 (0 converted, 42163 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.16s  (  0.16s elapsed)
+  GC    time    0.05s  (  0.06s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.22s  (  0.23s elapsed)
+
+  %GC time      25.3%  (26.4% elapsed)
+
+  Alloc rate    1,999,334,070 bytes per MUT second
+
+  Productivity  74.7% of total user, 69.5% of total elapsed
+
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 2 cores:
+./bh +RTS -N2 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.20s
+     332,082,048 bytes allocated in the heap
+      29,149,728 bytes copied during GC
+       1,755,648 bytes maximum residency (13 sample(s))
+         348,952 bytes maximum slop
+               7 MB total memory in use (1 MB lost due to fragmentation)
+
+  Generation 0:   343 collections,   342 parallel,  0.10s,  0.06s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.05s,  0.03s elapsed
+
+  Parallel GC work balance: 1.29 (3624877 / 2810869, ideal 2)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.11s    (  0.11s)       0.04s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.11s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.02s    (  0.11s)       0.01s    (  0.01s)
+  Task  3 (worker) :    0.08s    (  0.11s)       0.09s    (  0.05s)
+
+  SPARKS: 43198 (154 converted, 38471 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.18s  (  0.11s elapsed)
+  GC    time    0.15s  (  0.08s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.33s  (  0.21s elapsed)
+
+  %GC time      44.7%  (40.2% elapsed)
+
+  Alloc rate    1,824,897,363 bytes per MUT second
+
+  Productivity  55.3% of total user, 86.2% of total elapsed
+
+gc_alloc_block_sync: 1417
+whitehole_spin: 0
+gen[0].steps[0].sync_large_objects: 2
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 2 on 2 cores:
+./bh +RTS -N2 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.20s
+     331,261,568 bytes allocated in the heap
+      28,892,272 bytes copied during GC
+       1,616,920 bytes maximum residency (13 sample(s))
+         349,976 bytes maximum slop
+               6 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   356 collections,   355 parallel,  0.09s,  0.06s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.05s,  0.03s elapsed
+
+  Parallel GC work balance: 1.28 (3586219 / 2810172, ideal 2)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.12s    (  0.11s)       0.04s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.12s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.02s    (  0.12s)       0.01s    (  0.01s)
+  Task  3 (worker) :    0.07s    (  0.12s)       0.08s    (  0.05s)
+
+  SPARKS: 43008 (139 converted, 38112 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.20s  (  0.12s elapsed)
+  GC    time    0.13s  (  0.08s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.34s  (  0.21s elapsed)
+
+  %GC time      39.8%  (39.2% elapsed)
+
+  Alloc rate    1,624,093,936 bytes per MUT second
+
+  Productivity  59.9% of total user, 95.1% of total elapsed
+
+gc_alloc_block_sync: 1713
+whitehole_spin: 14
+gen[0].steps[0].sync_large_objects: 6
+gen[0].steps[1].sync_large_objects: 5
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 3 on 2 cores:
+./bh +RTS -N2 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.20s
+     359,118,584 bytes allocated in the heap
+      31,010,784 bytes copied during GC
+       1,782,368 bytes maximum residency (13 sample(s))
+         351,824 bytes maximum slop
+               7 MB total memory in use (1 MB lost due to fragmentation)
+
+  Generation 0:   368 collections,   367 parallel,  0.10s,  0.06s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.06s,  0.03s elapsed
+
+  Parallel GC work balance: 1.34 (3856446 / 2887349, ideal 2)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.11s    (  0.12s)       0.07s    (  0.04s)
+  Task  1 (worker) :    0.00s    (  0.12s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.01s    (  0.12s)       0.01s    (  0.01s)
+  Task  3 (worker) :    0.10s    (  0.12s)       0.07s    (  0.05s)
+
+  SPARKS: 47473 (119 converted, 43900 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.19s  (  0.12s elapsed)
+  GC    time    0.16s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.35s  (  0.22s elapsed)
+
+  %GC time      45.0%  (40.7% elapsed)
+
+  Alloc rate    1,860,997,683 bytes per MUT second
+
+  Productivity  55.0% of total user, 89.1% of total elapsed
+
+gc_alloc_block_sync: 1409
+whitehole_spin: 9
+gen[0].steps[0].sync_large_objects: 0
+gen[0].steps[1].sync_large_objects: 0
+gen[1].steps[0].sync_large_objects: 0
+> Par. run 1 on 3 cores:
+./bh +RTS -N3 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.19s
+     439,808,896 bytes allocated in the heap
+      36,063,736 bytes copied during GC
+       1,954,472 bytes maximum residency (14 sample(s))
+         369,608 bytes maximum slop
+               7 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   316 collections,   315 parallel,  0.14s,  0.06s elapsed
+  Generation 1:    14 collections,    14 parallel,  0.10s,  0.03s elapsed
+
+  Parallel GC work balance: 1.52 (4481925 / 2939031, ideal 3)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.15s    (  0.10s)       0.03s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.08s    (  0.10s)       0.09s    (  0.03s)
+  Task  4 (worker) :    0.05s    (  0.10s)       0.13s    (  0.05s)
+
+  SPARKS: 60700 (475 converted, 49609 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.23s  (  0.10s elapsed)
+  GC    time    0.25s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.47s  (  0.21s elapsed)
+
+  %GC time      51.8%  (43.9% elapsed)
+
+  Alloc rate    1,920,856,445 bytes per MUT second
+
+  Productivity  48.0% of total user, 109.2% of total elapsed
+
+gc_alloc_block_sync: 2864
+whitehole_spin: 8
+gen[0].steps[0].sync_large_objects: 74
+gen[0].steps[1].sync_large_objects: 12
+gen[1].steps[0].sync_large_objects: 31
+> Par. run 2 on 3 cores:
+./bh +RTS -N3 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.19s
+     410,598,960 bytes allocated in the heap
+      34,019,928 bytes copied during GC
+       2,027,720 bytes maximum residency (14 sample(s))
+         369,056 bytes maximum slop
+               8 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   302 collections,   301 parallel,  0.12s,  0.06s elapsed
+  Generation 1:    14 collections,    14 parallel,  0.09s,  0.04s elapsed
+
+  Parallel GC work balance: 1.48 (4230455 / 2864290, ideal 3)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.09s    (  0.10s)       0.08s    (  0.03s)
+  Task  1 (worker) :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.08s    (  0.10s)       0.09s    (  0.04s)
+  Task  4 (worker) :    0.13s    (  0.10s)       0.04s    (  0.02s)
+
+  SPARKS: 55980 (478 converted, 45710 pruned)
+
+  INIT  time    0.00s  (  0.00s elapsed)
+  MUT   time    0.26s  (  0.10s elapsed)
+  GC    time    0.21s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.47s  (  0.19s elapsed)
+
+  %GC time      45.2%  (47.4% elapsed)
+
+  Alloc rate    1,591,721,785 bytes per MUT second
+
+  Productivity  54.8% of total user, 133.6% of total elapsed
+
+gc_alloc_block_sync: 2177
+whitehole_spin: 29
+gen[0].steps[0].sync_large_objects: 125
+gen[0].steps[1].sync_large_objects: 9
+gen[1].steps[0].sync_large_objects: 48
+> Par. run 3 on 3 cores:
+./bh +RTS -N3 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.19s
+     408,415,272 bytes allocated in the heap
+      33,450,912 bytes copied during GC
+       2,027,216 bytes maximum residency (13 sample(s))
+         296,216 bytes maximum slop
+               8 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   297 collections,   296 parallel,  0.13s,  0.06s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.10s,  0.03s elapsed
+
+  Parallel GC work balance: 1.47 (4159796 / 2822797, ideal 3)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.11s    (  0.10s)       0.06s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.06s    (  0.10s)       0.11s    (  0.05s)
+  Task  4 (worker) :    0.11s    (  0.10s)       0.06s    (  0.02s)
+
+  SPARKS: 55925 (418 converted, 45176 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.23s  (  0.10s elapsed)
+  GC    time    0.24s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.47s  (  0.20s elapsed)
+
+  %GC time      50.3%  (45.1% elapsed)
+
+  Alloc rate    1,745,632,969 bytes per MUT second
+
+  Productivity  49.7% of total user, 115.4% of total elapsed
+
+gc_alloc_block_sync: 2173
+whitehole_spin: 14
+gen[0].steps[0].sync_large_objects: 37
+gen[0].steps[1].sync_large_objects: 2
+gen[1].steps[0].sync_large_objects: 22
+> Par. run 1 on 4 cores:
+./bh +RTS -N4 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.18s
+     404,324,120 bytes allocated in the heap
+      31,512,632 bytes copied during GC
+       2,067,360 bytes maximum residency (14 sample(s))
+         357,488 bytes maximum slop
+               8 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   233 collections,   232 parallel,  0.17s,  0.05s elapsed
+  Generation 1:    14 collections,    14 parallel,  0.13s,  0.04s elapsed
+
+  Parallel GC work balance: 1.54 (3916560 / 2550381, ideal 4)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.11s    (  0.09s)       0.05s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.09s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.09s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.04s    (  0.09s)       0.11s    (  0.03s)
+  Task  4 (worker) :    0.07s    (  0.09s)       0.09s    (  0.03s)
+  Task  5 (worker) :    0.09s    (  0.09s)       0.06s    (  0.01s)
+
+  SPARKS: 55589 (666 converted, 38916 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.26s  (  0.09s elapsed)
+  GC    time    0.30s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.56s  (  0.19s elapsed)
+
+  %GC time      53.8%  (46.9% elapsed)
+
+  Alloc rate    1,555,361,966 bytes per MUT second
+
+  Productivity  46.0% of total user, 135.5% of total elapsed
+
+gc_alloc_block_sync: 4056
+whitehole_spin: 4
+gen[0].steps[0].sync_large_objects: 585
+gen[0].steps[1].sync_large_objects: 74
+gen[1].steps[0].sync_large_objects: 3
+> Par. run 2 on 4 cores:
+./bh +RTS -N4 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.20s
+     495,403,928 bytes allocated in the heap
+      39,576,032 bytes copied during GC
+       2,328,592 bytes maximum residency (15 sample(s))
+         411,632 bytes maximum slop
+               8 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   283 collections,   282 parallel,  0.20s,  0.07s elapsed
+  Generation 1:    15 collections,    15 parallel,  0.15s,  0.04s elapsed
+
+  Parallel GC work balance: 1.63 (4927396 / 3024222, ideal 4)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.14s    (  0.10s)       0.05s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.10s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.06s    (  0.10s)       0.13s    (  0.04s)
+  Task  4 (worker) :    0.11s    (  0.10s)       0.06s    (  0.02s)
+  Task  5 (worker) :    0.07s    (  0.10s)       0.11s    (  0.03s)
+
+  SPARKS: 71948 (819 converted, 54306 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.32s  (  0.10s elapsed)
+  GC    time    0.35s  (  0.11s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.67s  (  0.22s elapsed)
+
+  %GC time      51.9%  (48.4% elapsed)
+
+  Alloc rate    1,529,255,745 bytes per MUT second
+
+  Productivity  48.1% of total user, 147.9% of total elapsed
+
+gc_alloc_block_sync: 5346
+whitehole_spin: 4
+gen[0].steps[0].sync_large_objects: 492
+gen[0].steps[1].sync_large_objects: 109
+gen[1].steps[0].sync_large_objects: 199
+> Par. run 3 on 4 cores:
+./bh +RTS -N4 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.19s
+     465,090,640 bytes allocated in the heap
+      36,565,776 bytes copied during GC
+       2,142,976 bytes maximum residency (15 sample(s))
+         361,872 bytes maximum slop
+               9 MB total memory in use (1 MB lost due to fragmentation)
+
+  Generation 0:   262 collections,   261 parallel,  0.19s,  0.06s elapsed
+  Generation 1:    15 collections,    15 parallel,  0.14s,  0.04s elapsed
+
+  Parallel GC work balance: 1.60 (4545977 / 2846082, ideal 4)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.11s    (  0.09s)       0.06s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.09s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.09s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.04s    (  0.09s)       0.13s    (  0.04s)
+  Task  4 (worker) :    0.09s    (  0.09s)       0.08s    (  0.03s)
+  Task  5 (worker) :    0.11s    (  0.09s)       0.06s    (  0.02s)
+
+  SPARKS: 65753 (763 converted, 48992 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.29s  (  0.09s elapsed)
+  GC    time    0.33s  (  0.10s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.61s  (  0.21s elapsed)
+
+  %GC time      53.4%  (47.9% elapsed)
+
+  Alloc rate    1,626,429,895 bytes per MUT second
+
+  Productivity  46.6% of total user, 138.6% of total elapsed
+
+gc_alloc_block_sync: 4785
+whitehole_spin: 2
+gen[0].steps[0].sync_large_objects: 687
+gen[0].steps[1].sync_large_objects: 202
+gen[1].steps[0].sync_large_objects: 89
+> Par. run 1 on 5 cores:
+./bh +RTS -N5 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.18s
+     430,426,744 bytes allocated in the heap
+      32,892,280 bytes copied during GC
+       2,130,280 bytes maximum residency (14 sample(s))
+         280,176 bytes maximum slop
+               9 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   211 collections,   210 parallel,  0.22s,  0.06s elapsed
+  Generation 1:    14 collections,    14 parallel,  0.17s,  0.04s elapsed
+
+  Parallel GC work balance: 1.58 (4087244 / 2591262, ideal 5)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.09s    (  0.08s)       0.06s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  0.09s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.09s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.06s    (  0.09s)       0.09s    (  0.02s)
+  Task  4 (worker) :    0.05s    (  0.09s)       0.10s    (  0.03s)
+  Task  5 (worker) :    0.10s    (  0.09s)       0.05s    (  0.01s)
+  Task  6 (worker) :    0.07s    (  0.09s)       0.08s    (  0.02s)
+
+  SPARKS: 60931 (1176 converted, 39381 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.29s  (  0.09s elapsed)
+  GC    time    0.39s  (  0.10s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.69s  (  0.20s elapsed)
+
+  %GC time      57.0%  (49.1% elapsed)
+
+  Alloc rate    1,454,355,680 bytes per MUT second
+
+  Productivity  42.9% of total user, 150.2% of total elapsed
+
+gc_alloc_block_sync: 6784
+whitehole_spin: 17
+gen[0].steps[0].sync_large_objects: 415
+gen[0].steps[1].sync_large_objects: 419
+gen[1].steps[0].sync_large_objects: 6
+> Par. run 2 on 5 cores:
+./bh +RTS -N5 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     417,883,280 bytes allocated in the heap
+      30,686,736 bytes copied during GC
+       2,235,944 bytes maximum residency (13 sample(s))
+         360,416 bytes maximum slop
+               9 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   205 collections,   205 parallel,  0.22s,  0.06s elapsed
+  Generation 1:    13 collections,    12 parallel,  0.16s,  0.04s elapsed
+
+  Parallel GC work balance: 1.54 (3829445 / 2479954, ideal 5)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.13s    (  0.08s)       0.02s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.08s    (  0.08s)       0.06s    (  0.01s)
+  Task  4 (worker) :    0.10s    (  0.08s)       0.05s    (  0.01s)
+  Task  5 (worker) :    0.00s    (  0.08s)       0.16s    (  0.04s)
+  Task  6 (worker) :    0.06s    (  0.08s)       0.09s    (  0.02s)
+
+  SPARKS: 60074 (1135 converted, 37331 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.25s  (  0.08s elapsed)
+  GC    time    0.38s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.63s  (  0.19s elapsed)
+
+  %GC time      60.3%  (48.5% elapsed)
+
+  Alloc rate    1,678,529,229 bytes per MUT second
+
+  Productivity  39.7% of total user, 133.2% of total elapsed
+
+gc_alloc_block_sync: 5929
+whitehole_spin: 20
+gen[0].steps[0].sync_large_objects: 220
+gen[0].steps[1].sync_large_objects: 202
+gen[1].steps[0].sync_large_objects: 83
+> Par. run 3 on 5 cores:
+./bh +RTS -N5 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     411,581,544 bytes allocated in the heap
+      31,610,136 bytes copied during GC
+       2,080,312 bytes maximum residency (13 sample(s))
+         304,336 bytes maximum slop
+               9 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   203 collections,   202 parallel,  0.20s,  0.05s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.18s,  0.04s elapsed
+
+  Parallel GC work balance: 1.59 (3927776 / 2470976, ideal 5)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.09s    (  0.08s)       0.06s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.06s    (  0.08s)       0.08s    (  0.02s)
+  Task  4 (worker) :    0.00s    (  0.08s)       0.16s    (  0.04s)
+  Task  5 (worker) :    0.11s    (  0.08s)       0.03s    (  0.01s)
+  Task  6 (worker) :    0.10s    (  0.08s)       0.05s    (  0.01s)
+
+  SPARKS: 57597 (1043 converted, 37531 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.27s  (  0.08s elapsed)
+  GC    time    0.38s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.65s  (  0.19s elapsed)
+
+  %GC time      58.3%  (49.5% elapsed)
+
+  Alloc rate    1,513,378,869 bytes per MUT second
+
+  Productivity  41.7% of total user, 146.8% of total elapsed
+
+gc_alloc_block_sync: 6388
+whitehole_spin: 2
+gen[0].steps[0].sync_large_objects: 348
+gen[0].steps[1].sync_large_objects: 123
+gen[1].steps[0].sync_large_objects: 9
+> Par. run 1 on 6 cores:
+./bh +RTS -N6 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.19s
+     499,859,800 bytes allocated in the heap
+      39,145,808 bytes copied during GC
+       2,315,192 bytes maximum residency (15 sample(s))
+         448,168 bytes maximum slop
+              10 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   207 collections,   206 parallel,  0.24s,  0.06s elapsed
+  Generation 1:    15 collections,    15 parallel,  0.26s,  0.05s elapsed
+
+  Parallel GC work balance: 1.65 (4867374 / 2958276, ideal 6)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.09s    (  0.08s)       0.07s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.01s    (  0.00s)
+  Task  3 (worker) :    0.05s    (  0.08s)       0.10s    (  0.02s)
+  Task  4 (worker) :    0.04s    (  0.08s)       0.12s    (  0.02s)
+  Task  5 (worker) :    0.02s    (  0.08s)       0.14s    (  0.03s)
+  Task  6 (worker) :    0.12s    (  0.08s)       0.04s    (  0.01s)
+  Task  7 (worker) :    0.14s    (  0.08s)       0.01s    (  0.00s)
+
+  SPARKS: 72372 (1535 converted, 44758 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.34s  (  0.08s elapsed)
+  GC    time    0.50s  (  0.11s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.85s  (  0.20s elapsed)
+
+  %GC time      59.3%  (52.4% elapsed)
+
+  Alloc rate    1,449,108,403 bytes per MUT second
+
+  Productivity  40.7% of total user, 170.3% of total elapsed
+
+gc_alloc_block_sync: 10515
+whitehole_spin: 15
+gen[0].steps[0].sync_large_objects: 822
+gen[0].steps[1].sync_large_objects: 300
+gen[1].steps[0].sync_large_objects: 206
+> Par. run 2 on 6 cores:
+./bh +RTS -N6 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     427,106,872 bytes allocated in the heap
+      30,964,160 bytes copied during GC
+       2,116,352 bytes maximum residency (13 sample(s))
+         293,304 bytes maximum slop
+               9 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   185 collections,   184 parallel,  0.25s,  0.05s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.21s,  0.04s elapsed
+
+  Parallel GC work balance: 1.61 (3845963 / 2391152, ideal 6)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.07s    (  0.08s)       0.08s    (  0.02s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.00s    (  0.08s)       0.14s    (  0.03s)
+  Task  4 (worker) :    0.06s    (  0.08s)       0.08s    (  0.01s)
+  Task  5 (worker) :    0.04s    (  0.08s)       0.10s    (  0.02s)
+  Task  6 (worker) :    0.12s    (  0.08s)       0.03s    (  0.01s)
+  Task  7 (worker) :    0.11s    (  0.08s)       0.04s    (  0.01s)
+
+  SPARKS: 61891 (1482 converted, 36387 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.29s  (  0.08s elapsed)
+  GC    time    0.46s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.75s  (  0.19s elapsed)
+
+  %GC time      61.6%  (50.3% elapsed)
+
+  Alloc rate    1,473,005,807 bytes per MUT second
+
+  Productivity  38.4% of total user, 155.6% of total elapsed
+
+gc_alloc_block_sync: 8204
+whitehole_spin: 3
+gen[0].steps[0].sync_large_objects: 797
+gen[0].steps[1].sync_large_objects: 266
+gen[1].steps[0].sync_large_objects: 73
+> Par. run 3 on 6 cores:
+./bh +RTS -N6 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.18s
+     505,250,680 bytes allocated in the heap
+      37,651,224 bytes copied during GC
+       2,418,376 bytes maximum residency (14 sample(s))
+         418,120 bytes maximum slop
+              10 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   207 collections,   206 parallel,  0.24s,  0.06s elapsed
+  Generation 1:    14 collections,    14 parallel,  0.21s,  0.04s elapsed
+
+  Parallel GC work balance: 1.73 (4683518 / 2706374, ideal 6)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.12s    (  0.08s)       0.03s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.00s    (  0.08s)       0.20s    (  0.04s)
+  Task  4 (worker) :    0.10s    (  0.08s)       0.05s    (  0.01s)
+  Task  5 (worker) :    0.09s    (  0.08s)       0.06s    (  0.01s)
+  Task  6 (worker) :    0.11s    (  0.08s)       0.04s    (  0.01s)
+  Task  7 (worker) :    0.10s    (  0.08s)       0.06s    (  0.01s)
+
+  SPARKS: 74443 (1392 converted, 50123 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.34s  (  0.08s elapsed)
+  GC    time    0.45s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.79s  (  0.19s elapsed)
+
+  %GC time      56.4%  (49.8% elapsed)
+
+  Alloc rate    1,464,745,217 bytes per MUT second
+
+  Productivity  43.6% of total user, 181.9% of total elapsed
+
+gc_alloc_block_sync: 12425
+whitehole_spin: 7
+gen[0].steps[0].sync_large_objects: 771
+gen[0].steps[1].sync_large_objects: 294
+gen[1].steps[0].sync_large_objects: 176
+> Par. run 1 on 7 cores:
+./bh +RTS -N7 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     391,197,688 bytes allocated in the heap
+      28,155,576 bytes copied during GC
+       1,881,656 bytes maximum residency (13 sample(s))
+         361,272 bytes maximum slop
+              10 MB total memory in use (1 MB lost due to fragmentation)
+
+  Generation 0:   158 collections,   158 parallel,  0.26s,  0.06s elapsed
+  Generation 1:    13 collections,    12 parallel,  0.22s,  0.04s elapsed
+
+  Parallel GC work balance: 1.59 (3513625 / 2210845, ideal 7)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.07s    (  0.07s)       0.06s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.02s    (  0.00s)
+  Task  3 (worker) :    0.00s    (  0.08s)       0.15s    (  0.03s)
+  Task  4 (worker) :    0.08s    (  0.08s)       0.05s    (  0.01s)
+  Task  5 (worker) :    0.06s    (  0.08s)       0.07s    (  0.01s)
+  Task  6 (worker) :    0.09s    (  0.08s)       0.04s    (  0.01s)
+  Task  7 (worker) :    0.09s    (  0.08s)       0.04s    (  0.01s)
+  Task  8 (worker) :    0.09s    (  0.08s)       0.05s    (  0.01s)
+
+  SPARKS: 56809 (1858 converted, 28779 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.31s  (  0.08s elapsed)
+  GC    time    0.48s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.80s  (  0.18s elapsed)
+
+  %GC time      60.5%  (50.2% elapsed)
+
+  Alloc rate    1,242,074,861 bytes per MUT second
+
+  Productivity  39.5% of total user, 175.1% of total elapsed
+
+gc_alloc_block_sync: 9029
+whitehole_spin: 7
+gen[0].steps[0].sync_large_objects: 1863
+gen[0].steps[1].sync_large_objects: 447
+gen[1].steps[0].sync_large_objects: 108
+> Par. run 2 on 7 cores:
+./bh +RTS -N7 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     425,935,752 bytes allocated in the heap
+      30,756,624 bytes copied during GC
+       1,930,928 bytes maximum residency (13 sample(s))
+         461,872 bytes maximum slop
+              10 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   169 collections,   168 parallel,  0.28s,  0.06s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.26s,  0.04s elapsed
+
+  Parallel GC work balance: 1.60 (3818435 / 2390013, ideal 7)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.07s)       0.15s    (  0.03s)
+  Task  1 (worker) :    0.07s    (  0.08s)       0.07s    (  0.01s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.01s    (  0.00s)
+  Task  3 (worker) :    0.06s    (  0.08s)       0.08s    (  0.01s)
+  Task  4 (worker) :    0.08s    (  0.08s)       0.06s    (  0.01s)
+  Task  5 (worker) :    0.08s    (  0.08s)       0.06s    (  0.01s)
+  Task  6 (worker) :    0.12s    (  0.08s)       0.02s    (  0.00s)
+  Task  7 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  8 (worker) :    0.06s    (  0.08s)       0.08s    (  0.01s)
+
+  SPARKS: 62503 (1950 converted, 32129 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.32s  (  0.08s elapsed)
+  GC    time    0.54s  (  0.10s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.86s  (  0.19s elapsed)
+
+  %GC time      63.0%  (51.3% elapsed)
+
+  Alloc rate    1,339,643,877 bytes per MUT second
+
+  Productivity  36.9% of total user, 168.2% of total elapsed
+
+gc_alloc_block_sync: 8941
+whitehole_spin: 3
+gen[0].steps[0].sync_large_objects: 947
+gen[0].steps[1].sync_large_objects: 228
+gen[1].steps[0].sync_large_objects: 87
+> Par. run 3 on 7 cores:
+./bh +RTS -N7 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     449,874,312 bytes allocated in the heap
+      32,507,064 bytes copied during GC
+       1,882,792 bytes maximum residency (12 sample(s))
+         380,048 bytes maximum slop
+              10 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   178 collections,   177 parallel,  0.32s,  0.06s elapsed
+  Generation 1:    12 collections,    12 parallel,  0.20s,  0.03s elapsed
+
+  Parallel GC work balance: 1.68 (4036515 / 2404261, ideal 7)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.11s    (  0.08s)       0.02s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  3 (worker) :    0.00s    (  0.08s)       0.22s    (  0.04s)
+  Task  4 (worker) :    0.10s    (  0.08s)       0.03s    (  0.01s)
+  Task  5 (worker) :    0.08s    (  0.08s)       0.06s    (  0.01s)
+  Task  6 (worker) :    0.06s    (  0.08s)       0.07s    (  0.01s)
+  Task  7 (worker) :    0.06s    (  0.08s)       0.08s    (  0.01s)
+  Task  8 (worker) :    0.10s    (  0.08s)       0.04s    (  0.01s)
+
+  SPARKS: 66765 (1992 converted, 36228 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.31s  (  0.08s elapsed)
+  GC    time    0.52s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.83s  (  0.18s elapsed)
+
+  %GC time      62.6%  (49.6% elapsed)
+
+  Alloc rate    1,446,745,880 bytes per MUT second
+
+  Productivity  37.3% of total user, 168.0% of total elapsed
+
+gc_alloc_block_sync: 12622
+whitehole_spin: 114
+gen[0].steps[0].sync_large_objects: 2002
+gen[0].steps[1].sync_large_objects: 584
+gen[1].steps[0].sync_large_objects: 183
+> Par. run 1 on 8 cores:
+./bh +RTS -N8 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.18s
+     454,635,272 bytes allocated in the heap
+      31,197,464 bytes copied during GC
+       2,289,720 bytes maximum residency (13 sample(s))
+         350,176 bytes maximum slop
+              11 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   157 collections,   156 parallel,  0.33s,  0.05s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.33s,  0.05s elapsed
+
+  Parallel GC work balance: 1.61 (3884602 / 2407773, ideal 8)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.12s    (  0.07s)       0.02s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.03s    (  0.01s)
+  Task  3 (worker) :    0.03s    (  0.08s)       0.11s    (  0.02s)
+  Task  4 (worker) :    0.00s    (  0.08s)       0.23s    (  0.03s)
+  Task  5 (worker) :    0.10s    (  0.08s)       0.05s    (  0.01s)
+  Task  6 (worker) :    0.08s    (  0.08s)       0.06s    (  0.01s)
+  Task  7 (worker) :    0.05s    (  0.08s)       0.09s    (  0.01s)
+  Task  8 (worker) :    0.09s    (  0.08s)       0.06s    (  0.01s)
+  Task  9 (worker) :    0.13s    (  0.08s)       0.01s    (  0.00s)
+
+  SPARKS: 68714 (2494 converted, 32114 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.34s  (  0.08s elapsed)
+  GC    time    0.66s  (  0.10s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    1.00s  (  0.19s elapsed)
+
+  %GC time      65.9%  (53.5% elapsed)
+
+  Alloc rate    1,329,517,837 bytes per MUT second
+
+  Productivity  33.9% of total user, 177.4% of total elapsed
+
+gc_alloc_block_sync: 12458
+whitehole_spin: 4
+gen[0].steps[0].sync_large_objects: 2493
+gen[0].steps[1].sync_large_objects: 683
+gen[1].steps[0].sync_large_objects: 111
+> Par. run 2 on 8 cores:
+./bh +RTS -N8 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     413,612,360 bytes allocated in the heap
+      28,857,656 bytes copied during GC
+       1,855,800 bytes maximum residency (13 sample(s))
+         447,760 bytes maximum slop
+              10 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   144 collections,   143 parallel,  0.32s,  0.06s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.25s,  0.04s elapsed
+
+  Parallel GC work balance: 1.60 (3585166 / 2235029, ideal 8)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.09s    (  0.07s)       0.04s    (  0.01s)
+  Task  1 (worker) :    0.00s    (  0.07s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.00s    (  0.07s)       0.01s    (  0.00s)
+  Task  3 (worker) :    0.00s    (  0.07s)       0.13s    (  0.02s)
+  Task  4 (worker) :    0.09s    (  0.07s)       0.04s    (  0.01s)
+  Task  5 (worker) :    0.06s    (  0.07s)       0.08s    (  0.01s)
+  Task  6 (worker) :    0.03s    (  0.07s)       0.11s    (  0.02s)
+  Task  7 (worker) :    0.09s    (  0.07s)       0.04s    (  0.01s)
+  Task  8 (worker) :    0.09s    (  0.07s)       0.04s    (  0.01s)
+  Task  9 (worker) :    0.04s    (  0.07s)       0.09s    (  0.01s)
+
+  SPARKS: 61279 (2311 converted, 27567 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.34s  (  0.07s elapsed)
+  GC    time    0.57s  (  0.09s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.92s  (  0.18s elapsed)
+
+  %GC time      62.5%  (51.8% elapsed)
+
+  Alloc rate    1,199,074,513 bytes per MUT second
+
+  Productivity  37.5% of total user, 190.8% of total elapsed
+
+gc_alloc_block_sync: 10854
+whitehole_spin: 3
+gen[0].steps[0].sync_large_objects: 2153
+gen[0].steps[1].sync_large_objects: 903
+gen[1].steps[0].sync_large_objects: 190
+> Par. run 3 on 8 cores:
+./bh +RTS -N8 -sstderr 
+1.76512512e7
+1950995.1986250158
+time taken: 0.17s
+     462,686,656 bytes allocated in the heap
+      31,205,392 bytes copied during GC
+       2,025,768 bytes maximum residency (13 sample(s))
+         387,520 bytes maximum slop
+              10 MB total memory in use (0 MB lost due to fragmentation)
+
+  Generation 0:   161 collections,   160 parallel,  0.35s,  0.06s elapsed
+  Generation 1:    13 collections,    13 parallel,  0.28s,  0.04s elapsed
+
+  Parallel GC work balance: 1.64 (3872043 / 2358130, ideal 8)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.13s    (  0.08s)       0.01s    (  0.00s)
+  Task  1 (worker) :    0.05s    (  0.08s)       0.09s    (  0.02s)
+  Task  2 (bound)  :    0.00s    (  0.08s)       0.01s    (  0.00s)
+  Task  3 (worker) :    0.04s    (  0.08s)       0.10s    (  0.01s)
+  Task  4 (worker) :    0.00s    (  0.08s)       0.22s    (  0.03s)
+  Task  5 (worker) :    0.07s    (  0.08s)       0.07s    (  0.01s)
+  Task  6 (worker) :    0.11s    (  0.08s)       0.03s    (  0.00s)
+  Task  7 (worker) :    0.05s    (  0.08s)       0.09s    (  0.01s)
+  Task  8 (worker) :    0.00s    (  0.08s)       0.00s    (  0.00s)
+  Task  9 (worker) :    0.12s    (  0.08s)       0.02s    (  0.00s)
+
+  SPARKS: 70939 (2659 converted, 32534 pruned)
+
+  INIT  time    0.00s  (  0.01s elapsed)
+  MUT   time    0.35s  (  0.08s elapsed)
+  GC    time    0.63s  (  0.10s elapsed)
+  EXIT  time    0.00s  (  0.00s elapsed)
+  Total time    0.98s  (  0.19s elapsed)
+
+  %GC time      64.3%  (52.1% elapsed)
+
+  Alloc rate    1,318,417,215 bytes per MUT second
+
+  Productivity  35.7% of total user, 189.5% of total elapsed
+
+gc_alloc_block_sync: 12864
+whitehole_spin: 12
+gen[0].steps[0].sync_large_objects: 2758
+gen[0].steps[1].sync_large_objects: 684
+gen[1].steps[0].sync_large_objects: 208

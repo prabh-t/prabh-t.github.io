@@ -1,0 +1,106 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Inherently Parallel Data Structures</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Keywords" content="Inherently Parallel Data Structures MSc Project Prabhat Totoo" />
+</head>
+<body>
+
+<article>
+
+	<h3>Inherently Parallel Data Structures</h3>
+	<small>Last updated: 25 Aug 2011</small>
+	<p>
+	<a href="MScInherentlyParallelDataStructures.txt">Project description</a>
+	</p>
+
+	<p>The project is broken into two parts. In the first part, an investigation of alternative underlying representations for linear data structures is carried out. The second part focuses on algorithms and their parallel implementations in a purely functional language.</p>
+
+	<h4>List Data Structure</h4>
+	We studied alternative representations of Haskell's list data structure that favour parallelism. For example, a list can be represented using an append tree. To this end, a new data structure library is created that defines the same functions as the standard list, but internally implemented and parallelised to take advantage of the new representation. The parallel library consists of the 2 modules: <code>ParTree</code> and <code>RAList</code>.
+	<ul style="list-style-type: disc;">
+	<li><em>Online Documentation</em> <a href="ralist-doc/index.html">here</a>.</li>
+	<li>Source <a href="ralist-src/">here</a> which includes <code>StdList.hs</code> (standard list functions/benchmark apps), <code>SeqPerfComparison.hs</code>, <code>ParPerfComparison.hs</code> and earlier versions.</li>
+	<li>Parallel performance measurements (<a href="measurements/ralist">all</a>)
+		<ul style="list-style-type: circle;">
+		<li>RAList &amp; Standard list parallel map
+			<ul style="list-style-type: none;">
+			<li>- <a href="measurements/ralist/parmap-runtime.png">Runtime</a></li>
+			<li>- <a href="measurements/ralist/parmap-speedup.png">Speedup</a></li>
+			</ul>
+		</li>
+		<li>Other parallel operations
+			<ul style="list-style-type: none;">
+			<li>- RAList (<a href="measurements/ralist/ralist-ops-runtime.png">Runtime</a> approx. 10x faster than std list | <a href="measurements/ralist/ralist-ops-speedup.png">Speedup</a>)</li>
+			<li>- Standard list (<a href="measurements/ralist/list-ops-runtime.png">Runtime</a> | <a href="measurements/ralist/list-ops-speedup.png">Speedup</a>)</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	</ul>
+
+	<h4>Algorithms and structures for the n-body problem</h4>
+	We studied different methods of solving the n-body problem and their implementaion in Haskell.
+	<ul style="list-style-type: square;">
+	<li>Full all-pairs</li>
+	<li>Triangular</li>
+	<li>Barnes-Hut Algorithm</li>
+	</ul>
+	For each of these methods, optimised sequential versions are first implemented following by annotations using parallel strategies in order to hint which part of the program can potentially be evaluated in parallel. My approach is to introduce parallelism at the top level. In doing so, many structures are used, including octree (3D of quadtree) for the BH method.
+	<ul style="list-style-type: disc;">
+	<li>Source <a href="nbody-src/">here</a>. (<a href="nbody-src/oldversions/README.txt">version history</a>)</li>
+	<li>Algorithm measurements (<a href="measurements/nbody">all</a>)<br/>
+		<ul style="list-style-type: circle;">
+		<li>Seq. profiling (<a href="measurements/nbody/profiling">all</a> | <a href="measurements/nbody/profiling/README.txt">readme</a>)
+			<ul style="list-style-type: none;">
+			<li>- Allpairs (<a href="measurements/nbody/profiling/allpairs-final-prof.png">png</a> | <a href="measurements/nbody/profiling/allpairs-final-prof.prof">prof</a>)</li>
+			<li>- Triangular (<a href="measurements/nbody/profiling/triangular-prof.png">png</a> | <a href="measurements/nbody/profiling/triangular-prof.prof">prof</a>)</li>
+			<li>- Barnes-Hut (<a href="measurements/nbody/profiling/bh-prof.png">png</a> | <a href="measurements/nbody/profiling/bh-prof.prof">prof</a>)</li>
+			</ul>
+		</li>
+		<li>Runtimes &amp; Speedups (<a href="measurements/nbody/runtime-speedup">all</a> | <a href="measurements/nbody/runtime-speedup/README.txt">readme</a>)</li>
+		<li>Threadscope (<a href="measurements/nbody/threadscope">all</a> | <a href="measurements/nbody/threadscope/README.txt">readme</a>)
+			<ul style="list-style-type: none;">
+			<li>- Allpairs (<a href="measurements/nbody/threadscope/allpairs-final-threadscope-1024-onestep.png">1 step</a>, <a href="measurements/nbody/threadscope/allpairs-final-threadscope-1024-20.png">20 steps</a>)</li>
+			<li>- Triangular (<a href="measurements/nbody/threadscope/triangular-threadscope-1024-onestep.png">1 step</a>, <a href="measurements/nbody/threadscope/triangular-threadscope-1024-20.png">20 steps</a>)</li>
+			<li>- Barnes-Hut (<a href="measurements/nbody/threadscope/bh-threadscope-1024-onestep.png">1 step</a>, <a href="measurements/nbody/threadscope/bh-threadscope-1024-20.png">20 steps</a>)</li>
+			</ul>
+		</li>
+		<li>Graphs (<a href="measurements/nbody/graphs">all</a>)
+			<ul style="list-style-type: none;">
+			<li>- Allpairs (16k bodies, 1 step) (<a href="measurements/nbody/graphs/allpairs-16k-1/allpairs-16k-1-runtime.png">runtime</a> | <a href="measurements/nbody/graphs/allpairs-16k-1/allpairs-16k-1-speedup.png">speedup</a>)</li>
+			<li>- Triangular vs Allpairs (1024 bodies, 20 steps) (<a href="measurements/nbody/graphs/triangular-vs-allpairs-1024-20/triangular-vs-allpairs-1024-20-runtime.png">runtime</a> | <a href="measurements/nbody/graphs/triangular-vs-allpairs-1024-20/triangular-vs-allpairs-1024-20-speedup.png">speedup</a>)</li>
+			<li>- Barnes-Hut (16k bodies, 20 steps) (<a href="measurements/nbody/graphs/bh-16k-20/bh-16k-20-runtime.png">runtime</a> | <a href="measurements/nbody/graphs/bh-16k-20/bh-16k-20-speedup.png">speedup</a>)</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	</ul>
+
+	<h4>Main References</h4>
+	<ol>
+	<li>Guy Steele. <i>Organising Functional Code for Parallel Execution.</i> Available online, August 2009. Sun Microsystems Laboratories.</li>
+	<li>Simon Marlow, Patrick Maier, Hans-Wolfgang Loidl, Mustafa K. Aswad, and Phil Trinder. <i>Seq no more: Better strategies for parallel haskell.</i> In Proceedings of the 3rd ACM SIGPLAN Symposium on Haskell, pages 91-102, Baltimore, MD, United States, September 2010. ACM Press.</li>
+	<li>Simon Marlow, Ryan Newton, and Simon Peyton Jones. <i>A monad for deterministic parallelism.</i> In Proceedings of the 4th ACM SIGPLAN Symposium on Haskell, 2011. ACM.</li>
+	<li>Piet Hut, Josh Barnes. <i>A hierarchical O(n log n) force calculation algorithm.</i> Nature, 1986.</li>
+	<li>Simon Peyton Jones. <i>Harnessing the multicores: Nested data parallelism in haskell.</i> In Proceedings of the 6th Asian Symposium on Programming Languages and Systems, APLAS '08, pages 138-138, Berlin, Heidelberg, 2008. Springer-Verlag.</li>
+	<li>Chris Okasaki. <i>Purely Functional Random-Access Lists.</i> Functional Programming Languages and Computer Architecutre, pages 86-95, 1995.</li>
+	</ol>
+	
+	<h4>Scripts</h4>
+	<a href="scripts/">Scripts</a> to compile/run the source program, collect the runtimes, and plot graphs.
+	<ul>
+	<li><code>run.sh</code><br/>
+		automate the compilation and execution of Haskell program. The seq. run is measured 3 times and par. run is measured 3 times on 1 to 8 cores.</li>
+	<li><code>collect.pl</code><br/>
+		collect runtimes from the output of run.sh. It finds the median times for the seq and par runs, and calculated the abs and rel speedups.</li>
+	<li><code>plot.sh</code><br/>
+		plot runtime and speedup graphs from the data collected by collect.pl.</li>
+	</ul>
+
+</article>
+</body>
+</html>

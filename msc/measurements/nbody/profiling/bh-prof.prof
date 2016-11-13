@@ -1,0 +1,57 @@
+	Tue Aug  9 13:00 2011 Time and Allocation Profiling Report  (Final)
+
+	   bh-prof +RTS -pT -hC -RTS
+
+	total time  =        0.12 secs   (6 ticks @ 20 ms)
+	total alloc =  65,040,384 bytes  (excludes profiling overheads)
+
+COST CENTRE                    MODULE               %time %alloc
+
+calcAccel                      Main                  50.0   13.8
+splitPoints                    Main                  16.7    3.4
+isFar                          Main                  16.7   18.6
+calcCentroid                   Main                  16.7    8.4
+main                           Main                   0.0    1.2
+inBox                          Main                   0.0   32.9
+buildTree                      Main                   0.0    1.6
+accel                          Main                   0.0   16.3
+
+
+                                                                                               individual    inherited
+COST CENTRE              MODULE                                               no.    entries  %time %alloc   %time %alloc
+
+MAIN                     MAIN                                                   1           0   0.0    0.0   100.0  100.0
+ CAF                     Main                                                 254          38   0.0    0.2   100.0   99.9
+  eps                    Main                                                 285           1   0.0    0.0     0.0    0.0
+  threshold              Main                                                 283           1   0.0    0.0     0.0    0.0
+  timeStep               Main                                                 275           1   0.0    0.0     0.0    0.0
+  nSteps                 Main                                                 271           1   0.0    0.0   100.0   96.9
+   oneStep               Main                                                 272           1   0.0    0.6   100.0   96.9
+    findBounds           Main                                                 278           1   0.0    0.5     0.0    0.5
+    buildTree            Main                                                 277        2045   0.0    1.6    33.3   46.4
+     splitPoints         Main                                                 280        1022  16.7    3.4    16.7   36.4
+      inBox              Main                                                 281       81840   0.0   32.9     0.0   32.9
+     calcCentroid        Main                                                 279        2045  16.7    8.4    16.7    8.4
+    dothis               Main                                                 274        1024   0.0    0.7    66.7   49.5
+     calcAccel           Main                                                 276       35886  50.0   13.8    66.7   48.7
+      accel              Main                                                 284       18455   0.0   16.3     0.0   16.3
+      isFar              Main                                                 282       31794  16.7   18.6    16.7   18.6
+    toArr                Main                                                 273           2   0.0    0.0     0.0    0.0
+  genVel                 Main                                                 267           1   0.0    0.0     0.0    0.0
+  genPms                 Main                                                 266           1   0.0    0.0     0.0    0.0
+  arrbounds              Main                                                 265           1   0.0    0.0     0.0    0.0
+  n                      Main                                                 262           1   0.0    0.0     0.0    0.0
+  ns                     Main                                                 261           1   0.0    0.1     0.0    0.1
+  main                   Main                                                 260           1   0.0    1.2     0.0    2.7
+   secDiff               Main                                                 286           1   0.0    0.0     0.0    0.0
+   f                     Main                                                 270        1024   0.0    0.4     0.0    0.4
+   genVel                Main                                                 269           0   0.0    0.2     0.0    0.2
+   genPms                Main                                                 268           0   0.0    0.3     0.0    0.3
+   toArr                 Main                                                 264           2   0.0    0.0     0.0    0.0
+   g                     Main                                                 263        1024   0.0    0.6     0.0    0.6
+ CAF                     GHC.Float                                            230           8   0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Handle.FD                                     191           2   0.0    0.0     0.0    0.0
+ CAF                     System.Posix.Internals                               190           1   0.0    0.0     0.0    0.0
+ CAF                     GHC.Conc                                             174           1   0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Handle.Internals                              165           1   0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Encoding.Iconv                                159           5   0.0    0.0     0.0    0.0

@@ -1,0 +1,26 @@
+Title: Inherently parallel data structures
+
+Proposer: Hans-Wolfgang Loidl
+
+Suggested supervisors: Hans-Wolfgang Loidl
+
+Goal: Develop and assess a library of inherently parallel data structures.
+
+Description:
+
+The classic design of efficient data structures has been strongly influenced by the sequential nature of processing them. Often linear data structures, such as lists or arrays, are used for high-performance computation, exploiting good data locality on algorithm level and good cache usage on system level.
+
+With the advent of multi-core machines, data structures that do not force a sequential evaluation mechanism on the algorithms are highly desirable. They encourage the design of high-level data-oriented algorithms, specifying parallelism in a minimally intrusive way.
+
+The aim of the project is to develop a library of inherently parallel list operations, to use them on classic algorithms and to assess the performance based on parallel Haskell implementations on multi-core architectures.
+
+Resources required: Linux, Beowulf cluster, Parallel Haskell compiler (GHC-SMP)
+
+Degree of difficulty: Moderate
+
+Background needed: Functional programming background (Haskell, ML ...)
+
+References:
+
+    Organising Functional Code for Parallel Execution
+    http://research.sun.com/projects/plrg/Publications/ICFPAugust2009Steele.pdf
