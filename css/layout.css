@@ -25,5 +25,5 @@ article {
 }
 
 #hovy-img:hover {
-  -webkit-transform: scale(1,1);
+  width:100%; height:auto
 }
