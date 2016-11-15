@@ -23,3 +23,7 @@ article {
     padding: 1em;
     overflow: hidden;
 }
+
+#hovy-img:hover {
+  -webkit-transform: scale(4,4);
+}
