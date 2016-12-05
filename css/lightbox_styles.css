@@ -10,9 +10,9 @@
 }
 
 #imgBox img {
+    top: 5%;
     height: auto;
     max-width: 100%;
-    vertical-align: middle;
 }
 
 .thumb {
