@@ -1,15 +1,10 @@
-function showImage(imgName) {
-    document.getElementById('largeImg').src = imgName;
-    showLargeImagePanel();
-    unselectAll();
-}
-function showLargeImagePanel() {
-    document.getElementById('largeImgPanel').style.visibility = 'visible';
-}
-function unselectAll() {
+function showImgBox(obj) {
+    document.getElementById('largeImg').src = obj.src;
+    document.getElementById('imgBox').style.visibility = 'visible';
     if(document.selection) document.selection.empty();
     if(window.getSelection) window.getSelection().removeAllRanges();
 }
-function hideMe(obj) {
+
+function hideImgBox(obj) {
     obj.style.visibility = 'hidden';
 }
