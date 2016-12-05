@@ -9,10 +9,16 @@
     background-color: rgba(100,100,100, 0.5);
 }
 
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
 #imgBox img {
-    top: 5%;
     height: auto;
     max-width: 100%;
+    vertical-align: middle;
 }
 
 .thumb {
