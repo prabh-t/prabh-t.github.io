@@ -16,7 +16,7 @@
 }
 
 .thumb {
-    cursor:pointer
+    cursor:pointer;
     width: 100px;
     border:1px solid black;
     border-radius:2px;
